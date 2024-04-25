@@ -1,5 +1,10 @@
 import { Heading } from "@radix-ui/themes";
+import { AppLayout } from "@/layouts";
 
 export default function Home() {
-  return <div>Pandora</div>;
+  return (
+    <AppLayout>
+      <p>Pandora</p>
+    </AppLayout>
+  );
 }

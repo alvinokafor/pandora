@@ -25,7 +25,7 @@ const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: Props) {
   return (
-    <main className={`${inter.className} font-sans`}>
+    <main className={`${inter.className}`}>
       <QueryClientProvider client={queryClient}>
         <Theme accentColor="green">
           <UserProvider>
