@@ -28,14 +28,14 @@ export default function NavBar() {
           <div className="hidden md:flex gap-x-6 items-center">
             <Link
               href="/"
-              className="py-2 px-3 border border-[#D0D5DD] shadow-sm text-dark-grey text-base rounded-lg transition-all duration-100 hover:border-[#9d9ea0] hover:shadow-md"
+              className="py-1.5 px-3 border border-[#D0D5DD] shadow-sm text-dark-grey text-base rounded-lg transition-all duration-100 hover:border-[#9d9ea0] hover:shadow-md"
             >
               <button>Sign In</button>
             </Link>
 
             <Link
               href="/"
-              className="py-2 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-md"
+              className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-md"
             >
               <button>Sign Up</button>
             </Link>
@@ -56,14 +56,14 @@ export default function NavBar() {
             <div className="flex flex-col items-start gap-y-4">
               <Link
                 href="/"
-                className="py-2 px-3 border border-[#D0D5DD] shadow-sm text-dark-grey text-base rounded-lg transition-all duration-100 hover:border-[#9d9ea0] hover:shadow-md"
+                className="py-1.5 px-3 border border-[#D0D5DD] shadow-sm text-dark-grey text-base rounded-lg transition-all duration-100 hover:border-[#9d9ea0] hover:shadow-md"
               >
                 <button>Sign In</button>
               </Link>
 
               <Link
                 href="/"
-                className="py-2 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-md"
+                className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-md"
               >
                 <button>Sign Up</button>
               </Link>

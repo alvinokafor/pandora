@@ -8,7 +8,6 @@ interface ILayoutProps {
 
 export default function AppLayout({ title, children }: ILayoutProps) {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <>
       <Head>

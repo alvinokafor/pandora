@@ -1,26 +1,26 @@
 import React from "react";
-import { GoogleColorIcon } from "@/assets/icons";
+import { GoogleColorIcon, FacebookLogo } from "@/assets/icons";
 
-export default function LoginForm() {
+export default function CreateAccountForm() {
   return (
     <section className="text-center md:w-[360px]">
       <div>
-        <h1 className="pb-2 text-2xl font-bold leading-10 text-heading-black">
-          Log in to your account
+        <h1 className="text-2xl font-bold leading-10 text-heading-black">
+          Create an account{" "}
         </h1>
         <p className="pb-4 text-base font-medium text-slate-grey">
-          Welcome back! Please enter your details.{" "}
+          Start your 30-day free trial.{" "}
         </p>
       </div>
       <form action="">
-        <div className="text-left mb-5">
+        <div className="text-left mb-4">
           <label
             htmlFor="email"
             className="block pl-1 text-sm font-medium leading-6 text-charcoal"
           >
             Email
           </label>
-          <div className="mt-2">
+          <div className="">
             <input
               id="email"
               name="email"
@@ -47,22 +47,27 @@ export default function LoginForm() {
           />
         </div>
 
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-end mt-2">
           <p className="text-sm text-primary-shade">Forgot Password?</p>
         </div>
 
-        <div className="mt-6 space-y-3">
+        <div className="mt-5 space-y-2">
           <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg">
-            Sign In
+            Get started{" "}
           </button>
-          <button className="flex gap-x-2 text-charcoal items-center justify-center text-base border rounded-lg border-french-gray py-2.5 text-center w-full">
+          <p>OR</p>
+          <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
             <GoogleColorIcon />
-            Sign in with Google
+            Sign up with Google
+          </button>
+          <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
+            <FacebookLogo />
+            Sign up with Facebook
           </button>
         </div>
       </form>
 
-      <div className="mt-8">
+      <div className="mt-6">
         <p className="text-slate-gray text-sm">
           Don't have an account?{" "}
           <span className="text-sm text-primary-shade">Sign Up</span>

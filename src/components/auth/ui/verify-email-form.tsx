@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function VerifyEmail() {
+export default function VerifyEmailForm() {
   return <div>verify-email</div>;
 }
