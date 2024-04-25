@@ -52,7 +52,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "dark-grey": "#344054",
+        charcoal: "#344054",
         "base-purple": "#7F56D9",
         "light-grey": "#667085",
         "sub-heading-black": "#1E1E1E",
@@ -60,7 +60,8 @@ const config = {
         "feature-bg": "#F5F7F9",
         "primary-shade": "#6941C6",
         "footer-header-grey": "#98A2B3",
-        "footer-text-accent": "#667085",
+        "slate-grey": "#667085",
+        "french-gray": "#D0D5DD",
       },
       borderRadius: {
         lg: "var(--radius)",

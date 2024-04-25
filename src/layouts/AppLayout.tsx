@@ -8,13 +8,14 @@ interface ILayoutProps {
 
 export default function AppLayout({ title, children }: ILayoutProps) {
   const pathname = usePathname();
+  console.log(pathname);
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
 
-      {pathname && !pathname.includes("auth") && <NavBar />}
+      {pathname && pathname.includes("auth") && <NavBar />}
       <main>{children}</main>
     </>
   );
