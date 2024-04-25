@@ -3,7 +3,7 @@ import { GoogleColorIcon, FacebookLogo } from "@/assets/icons";
 
 export default function CreateAccountForm() {
   return (
-    <section className="text-center md:w-[360px]">
+    <section className="text-center md:w-[360px] -mt-4">
       <div>
         <h1 className="text-2xl font-bold leading-10 text-heading-black">
           Create an account{" "}
