@@ -52,10 +52,10 @@ export default function LoginForm() {
         </div>
 
         <div className="mt-6 space-y-3">
-          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg">
+          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]">
             Sign In
           </button>
-          <button className="flex gap-x-2 text-charcoal items-center justify-center text-base border rounded-lg border-french-gray py-2.5 text-center w-full">
+          <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
             <GoogleColorIcon />
             Sign in with Google
           </button>

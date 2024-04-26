@@ -35,7 +35,7 @@ export default function NavBar() {
 
             <Link
               href="/"
-              className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-md"
+              className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-2xl hover:bg-[#714ec5e8]"
             >
               <button>Sign Up</button>
             </Link>
@@ -63,7 +63,7 @@ export default function NavBar() {
 
               <Link
                 href="/"
-                className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-md"
+                className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-2xl hover:bg-[#3b2274]"
               >
                 <button>Sign Up</button>
               </Link>

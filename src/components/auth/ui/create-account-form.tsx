@@ -52,7 +52,7 @@ export default function CreateAccountForm() {
         </div>
 
         <div className="mt-5 space-y-2">
-          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg">
+          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg  transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]">
             Get started{" "}
           </button>
           <p>OR</p>

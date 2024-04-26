@@ -1,10 +1,13 @@
-import { AppLayout } from "@/layouts";
+import { AppLayout, AuthPagesLayout } from "@/layouts";
 import React from "react";
+import ForgotPasswordForm from "@/components/auth/ui/forgot-password-form";
 
 export default function ForgotPassword() {
   return (
     <AppLayout title="Forgot Password?">
-      <div>forgot password</div>
+      <AuthPagesLayout>
+        <ForgotPasswordForm />
+      </AuthPagesLayout>
     </AppLayout>
   );
 }
