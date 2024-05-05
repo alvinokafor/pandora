@@ -1,13 +1,14 @@
 import Head from "next/head";
 import { usePathname } from "next/navigation";
-import { Sidebar } from "lucide-react";
-
+import { NavBar } from "@/components/partials";
 interface ILayoutProps {
   title: string;
   children: React.ReactNode;
 }
 
-export default function AppLayout({ title, children }: ILayoutProps) {
+import React from "react";
+
+export default function AuthLayout({ title, children }: ILayoutProps) {
   const pathname = usePathname();
   return (
     <>
@@ -22,15 +23,14 @@ export default function AppLayout({ title, children }: ILayoutProps) {
         />
       </Head>
 
-      <div>
-        <Sidebar />
-
-        <main>{children}</main>
-      </div>
+      <NavBar />
+      <main className="mt-24 flex justify-center items-center px-4">
+        {children}
+      </main>
     </>
   );
 }
 
-AppLayout.defaultProps = {
+AuthLayout.defaultProps = {
   title: "Pandora",
 };
