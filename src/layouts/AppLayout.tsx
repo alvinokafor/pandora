@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { usePathname } from "next/navigation";
-import { Sidebar } from "lucide-react";
+import { Sidebar, Sidepanel } from "@/components/partials";
 
 interface ILayoutProps {
   title: string;
@@ -22,10 +22,16 @@ export default function AppLayout({ title, children }: ILayoutProps) {
         />
       </Head>
 
-      <div>
-        <Sidebar />
-
-        <main>{children}</main>
+      <div className="grid grid-cols-6">
+        <div>
+          <Sidebar />
+        </div>
+        <div className="col-span-4">
+          <main>{children}</main>
+        </div>
+        <div>
+          <Sidepanel />
+        </div>
       </div>
     </>
   );

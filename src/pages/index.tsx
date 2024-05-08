@@ -3,7 +3,7 @@ import { AppLayout } from "@/layouts";
 
 export default function Home() {
   return (
-    <AppLayout>
+    <AppLayout title="Home - Pandora">
       <p>Pandora</p>
     </AppLayout>
   );
