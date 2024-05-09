@@ -62,6 +62,7 @@ const config = {
         "footer-header-grey": "#98A2B3",
         "slate-grey": "#667085",
         "french-gray": "#D0D5DD",
+        "success-dark": "#054F31",
       },
       borderRadius: {
         lg: "var(--radius)",

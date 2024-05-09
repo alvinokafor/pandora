@@ -5,6 +5,9 @@ import Logo from "./logo";
 import GoogleColorIcon from "./googleColorIcon";
 import AppleLogo from "./appleLogo";
 import FacebookLogo from "./facebookLogo";
+import SearchIcon from "./searchIcon";
+import Leaf from "./leaf";
+import CreateBox from "./createBox";
 
 export {
   LoadingIcon,
@@ -14,4 +17,7 @@ export {
   GoogleColorIcon,
   AppleLogo,
   FacebookLogo,
+  SearchIcon,
+  Leaf,
+  CreateBox,
 };

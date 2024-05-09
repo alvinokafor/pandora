@@ -26,7 +26,7 @@ export default function AppLayout({ title, children }: ILayoutProps) {
         <div>
           <Sidebar />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-4 p-4 pb-0">
           <main>{children}</main>
         </div>
         <div>
