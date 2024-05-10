@@ -63,6 +63,7 @@ const config = {
         "slate-grey": "#667085",
         "french-gray": "#D0D5DD",
         "success-dark": "#054F31",
+        "home-blue": "#1D92F1",
       },
       borderRadius: {
         lg: "var(--radius)",

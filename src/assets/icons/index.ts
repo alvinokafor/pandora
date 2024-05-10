@@ -8,6 +8,9 @@ import FacebookLogo from "./facebookLogo";
 import SearchIcon from "./searchIcon";
 import Leaf from "./leaf";
 import CreateBox from "./createBox";
+import BoxIcon from "./boxIcon";
+import KebabMenu from "./kebabMenu";
+import PasskeyIcon from "./passkeyIcon";
 
 export {
   LoadingIcon,
@@ -20,4 +23,7 @@ export {
   SearchIcon,
   Leaf,
   CreateBox,
+  BoxIcon,
+  KebabMenu,
+  PasskeyIcon,
 };

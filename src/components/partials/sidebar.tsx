@@ -33,8 +33,8 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="border-r max-h-screen p-4 pr-8"
       // className="w-[270px] max-w-xs h-screen border-r"
+      className="border-r max-h-screen p-4 pr-8 fixed w-[200px]"
     >
       <div className="flex flex-col justify-between h-screen pb-8">
         <div className="flex flex-col gap-y-6">
