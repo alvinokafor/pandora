@@ -22,11 +22,11 @@ export default function AppLayout({ title, children }: ILayoutProps) {
         />
       </Head>
 
-      <div className="grid grid-cols-6">
-        <div className="relative">
+      <div className="grid grid-cols-[190px,800px,1fr] relative">
+        <div className="border-r">
           <Sidebar />
         </div>
-        <div className="col-span-4 p-4 pb-0">
+        <div className="p-4 pb-0">
           <main>{children}</main>
         </div>
         <div className="">

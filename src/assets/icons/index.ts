@@ -12,6 +12,8 @@ import BoxIcon from "./boxIcon";
 import KebabMenu from "./kebabMenu";
 import PasskeyIcon from "./passkeyIcon";
 import DocumentIcon from "./documentIcon";
+import NotificationBell from "./notificationBell";
+import ChevronDown from "./chevron-down";
 
 export {
   LoadingIcon,
@@ -28,4 +30,6 @@ export {
   KebabMenu,
   PasskeyIcon,
   DocumentIcon,
+  NotificationBell,
+  ChevronDown,
 };
