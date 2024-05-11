@@ -11,6 +11,7 @@ import CreateBox from "./createBox";
 import BoxIcon from "./boxIcon";
 import KebabMenu from "./kebabMenu";
 import PasskeyIcon from "./passkeyIcon";
+import DocumentIcon from "./documentIcon";
 
 export {
   LoadingIcon,
@@ -26,4 +27,5 @@ export {
   BoxIcon,
   KebabMenu,
   PasskeyIcon,
+  DocumentIcon,
 };

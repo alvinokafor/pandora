@@ -6,7 +6,7 @@ import { Search } from "@/components/general-ui";
 export default function Home() {
   return (
     <AppLayout title="Home - Pandora">
-      <div className="h-screen">
+      <div className="">
         <Search />
         {/* <EmptyState /> */}
         <HomePageWithBoxes />
