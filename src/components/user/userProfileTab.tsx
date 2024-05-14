@@ -4,7 +4,7 @@ import UserProfilePhotoCard from "./userProfilePhotoCard";
 
 export default function UserProfileTab() {
   return (
-    <div className="border-b pb-4">
+    <div className="border-b pb-4 px-2">
       <div className="flex justify-between items-center">
         <div>
           <p className="text-sm text-sub-heading-black">Thursday</p>

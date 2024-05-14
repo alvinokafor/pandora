@@ -14,6 +14,7 @@ import PasskeyIcon from "./passkeyIcon";
 import DocumentIcon from "./documentIcon";
 import NotificationBell from "./notificationBell";
 import ChevronDown from "./chevron-down";
+import ShareOrangeBg from "./shareOrangeBg";
 
 export {
   LoadingIcon,
@@ -32,4 +33,5 @@ export {
   DocumentIcon,
   NotificationBell,
   ChevronDown,
+  ShareOrangeBg,
 };
