@@ -22,7 +22,8 @@ export default function AppLayout({ title, children }: ILayoutProps) {
         />
       </Head>
 
-      <div className="grid grid-cols-[190px,800px,1fr] relative">
+      {/* <div className="grid grid-cols-[190px,800px,1fr] relative"> */}
+      <div className="grid grid-cols-[190px,1fr,260px]">
         <div className="border-r">
           <Sidebar />
         </div>
