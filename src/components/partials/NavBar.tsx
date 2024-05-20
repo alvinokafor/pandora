@@ -27,14 +27,14 @@ export default function NavBar() {
         <div className="flex items-center justify-center pr-1">
           <div className="hidden md:flex gap-x-6 items-center">
             <Link
-              href="/"
+              href="/auth/login"
               className="py-1.5 px-3 border border-[#D0D5DD] shadow-sm text-dark-grey text-base rounded-lg transition-all duration-100 hover:border-[#9d9ea0] hover:shadow-md"
             >
               <button>Sign In</button>
             </Link>
 
             <Link
-              href="/"
+              href="/auth/create-account"
               className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-2xl hover:bg-[#714ec5e8]"
             >
               <button>Sign Up</button>
@@ -55,14 +55,14 @@ export default function NavBar() {
           <div className="w-full space-y-4 py-6 text-secondary md:hidden">
             <div className="flex flex-col items-start gap-y-4">
               <Link
-                href="/"
+                href="/auth/login"
                 className="py-1.5 px-3 border border-[#D0D5DD] shadow-sm text-dark-grey text-base rounded-lg transition-all duration-100 hover:border-[#9d9ea0] hover:shadow-md"
               >
                 <button>Sign In</button>
               </Link>
 
               <Link
-                href="/"
+                href="/auth/create-account"
                 className="py-1.5 px-3 bg-base-purple text-base rounded-lg shadow-sm text-white transition-all duration-100 hover:text-neutral-50 hover:shadow-2xl hover:bg-[#3b2274]"
               >
                 <button>Sign Up</button>

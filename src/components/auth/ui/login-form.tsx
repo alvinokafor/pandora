@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleColorIcon } from "@/assets/icons";
+import Link from "next/link";
 
 export default function LoginForm() {
   return (
@@ -48,7 +49,9 @@ export default function LoginForm() {
         </div>
 
         <div className="flex justify-end mt-4">
-          <p className="text-sm text-primary-shade">Forgot Password?</p>
+          <Link href="/auth/forgot-password">
+            <p className="text-sm text-primary-shade">Forgot Password?</p>
+          </Link>
         </div>
 
         <div className="mt-6 space-y-3">
@@ -65,7 +68,9 @@ export default function LoginForm() {
       <div className="mt-8">
         <p className="text-slate-gray text-sm">
           Don't have an account?{" "}
-          <span className="text-sm text-primary-shade">Sign Up</span>
+          <Link href="/auth/create-account">
+            <span className="text-sm text-primary-shade">Sign Up</span>
+          </Link>
         </p>
       </div>
     </section>

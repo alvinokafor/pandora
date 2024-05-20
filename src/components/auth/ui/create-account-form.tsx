@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleColorIcon, FacebookLogo } from "@/assets/icons";
+import Link from "next/link";
 
 export default function CreateAccountForm() {
   return (
@@ -47,10 +48,6 @@ export default function CreateAccountForm() {
           />
         </div>
 
-        <div className="flex justify-end mt-2">
-          <p className="text-sm text-primary-shade">Forgot Password?</p>
-        </div>
-
         <div className="mt-5 space-y-2">
           <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg  transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]">
             Get started{" "}
@@ -69,8 +66,10 @@ export default function CreateAccountForm() {
 
       <div className="mt-6">
         <p className="text-slate-gray text-sm">
-          Don't have an account?{" "}
-          <span className="text-sm text-primary-shade">Sign Up</span>
+          Already have an account?{" "}
+          <Link href="/auth/login">
+            <span className="text-sm text-primary-shade">Log In</span>
+          </Link>
         </p>
       </div>
     </section>
