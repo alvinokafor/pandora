@@ -5,7 +5,7 @@ import CircularProgressBar from "./circular-progress-bar";
 
 export default function Sidepanel() {
   return (
-    <div className="border-l h-screen pt-4 relative">
+    <div className="h-screen pt-4 relative">
       <div className="fixed w-[250px] overflow-y-scroll top-3 bottom-0">
         <UserProfileTab />
         <div className="flex justify-center pt-8 flex-col items-center gap-y-5 pb-6">

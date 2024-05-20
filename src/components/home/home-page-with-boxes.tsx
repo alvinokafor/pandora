@@ -11,7 +11,7 @@ export default function HomePageWithBoxes() {
           View All
         </button>
       </div>
-      <div className="flex gap-5 mb-2">
+      <div className="grid grid-cols-3 gap-x-5 mb-2">
         <BoxView />
         <BoxView />
         <BoxView />

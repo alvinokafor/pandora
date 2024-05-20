@@ -6,7 +6,7 @@ export default function BoxView() {
   const [progress, setProgress] = useState(43);
 
   return (
-    <div className="w-[247px] border border-gray-200 py-6 px-5 rounded-3xl flex flex-col gap-y-6">
+    <div className="w-auto border border-gray-200 py-6 px-5 rounded-3xl flex flex-col gap-y-6">
       <div>
         <BoxIcon />
       </div>

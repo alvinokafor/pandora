@@ -8,7 +8,7 @@ export default function CategoryPageWithBoxes() {
       <div className="flex justify-between items-center">
         <h2 className="heading-black font-medium">Your Categories</h2>
       </div>
-      <div className="flex gap-5 mb-2">
+      <div className="grid grid-cols-3 gap-x-5 mb-2">
         <CategoryBoxView />
         <CategoryBoxView />
         <CategoryBoxView />

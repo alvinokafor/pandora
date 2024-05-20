@@ -4,8 +4,8 @@ import { SearchIcon } from "@/assets/icons";
 export default function Search() {
   const [searchParam, setSearchParam] = useState("");
   return (
-    <div className="flex justify-between mb-3">
-      <div className="flex w-[690px] items-center gap-x-2 rounded-lg border border-slate-300 px-3 py-2.5 shadow-sm">
+    <div className="flex justify-between gap-x-6 mb-3">
+      <div className="flex w-full items-center gap-x-2 rounded-lg border border-slate-300 px-3 py-2.5 shadow-sm">
         <SearchIcon />
         <input
           required

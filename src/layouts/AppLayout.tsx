@@ -30,7 +30,7 @@ export default function AppLayout({ title, children }: ILayoutProps) {
         <div className="p-4 pb-0">
           <main>{children}</main>
         </div>
-        <div className="">
+        <div className="border-l">
           <Sidepanel />
         </div>
       </div>
