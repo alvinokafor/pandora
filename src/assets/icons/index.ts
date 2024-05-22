@@ -16,6 +16,8 @@ import NotificationBell from "./notificationBell";
 import ChevronDown from "./chevron-down";
 import ShareOrangeBg from "./shareOrangeBg";
 import AddIcon from "./addIcon";
+import AddIconGrey from "./addIconGrey";
+import PandoraBox from "./pandoraBox";
 
 export {
   LoadingIcon,
@@ -36,4 +38,6 @@ export {
   ChevronDown,
   ShareOrangeBg,
   AddIcon,
+  AddIconGrey,
+  PandoraBox,
 };
