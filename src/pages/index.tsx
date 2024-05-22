@@ -1,4 +1,3 @@
-import { Heading } from "@radix-ui/themes";
 import { AppLayout } from "@/layouts";
 import { EmptyState, HomePageWithBoxes } from "@/components/home";
 import { Search } from "@/components/general-ui";

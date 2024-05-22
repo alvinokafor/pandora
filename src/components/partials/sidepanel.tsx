@@ -1,7 +1,7 @@
 import React from "react";
 import { UserProfileTab, UserActivityTable } from "../user";
-import { CreateABox } from "../general-ui";
 import CircularProgressBar from "./circular-progress-bar";
+import { CreateABox } from "../general-ui";
 
 export default function Sidepanel() {
   return (
