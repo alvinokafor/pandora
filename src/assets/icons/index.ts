@@ -18,6 +18,7 @@ import ShareOrangeBg from "./shareOrangeBg";
 import AddIcon from "./addIcon";
 import AddIconGrey from "./addIconGrey";
 import PandoraBox from "./pandoraBox";
+import ReuploadIcon from "./reuploadIcon";
 
 export {
   LoadingIcon,
@@ -40,4 +41,5 @@ export {
   AddIcon,
   AddIconGrey,
   PandoraBox,
+  ReuploadIcon,
 };

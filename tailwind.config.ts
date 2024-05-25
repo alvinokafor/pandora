@@ -65,6 +65,7 @@ const config = {
         "success-dark": "#054F31",
         "home-blue": "#1D92F1",
         "gun-metal": "#1D2939",
+        "marian-blue": "#364670",
       },
       borderRadius: {
         lg: "var(--radius)",
