@@ -13,7 +13,8 @@ export default function Sidepanel() {
   return (
     <div className="h-screen pt-4 relative">
       {/* <HomeSidepanel /> */}
-      <FileDetails />
+      {/* <FileDetails /> */}
+      <PasskeyDetails />
     </div>
   );
 }
