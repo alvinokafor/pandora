@@ -46,8 +46,12 @@ export default function FileDetails() {
                 </p>
               </section>
               <section className="flex items-center justify-between gap-x-4">
-                <p className="text-sm text-[#92929D]">Last Modified</p>
-                <p className="text-sm text-marian-blue ">21 Apr 2021 10:12AM</p>
+                <p className="text-sm text-[#92929D] whitespace-nowrap">
+                  Last Modified
+                </p>
+                <p className="text-sm text-marian-blue whitespace-pre-wrapped">
+                  21 Apr 2021 10:12AM
+                </p>
               </section>
             </div>
           </div>
