@@ -73,7 +73,7 @@ export default function UserPasskeysTable() {
                 key={box.passkeyName}
                 className="border-b border-b-gray-200"
               >
-                <TableCell className="font-medium flex items-centr gap-x-2">
+                <TableCell className="font-medium flex items-center gap-x-2">
                   <div>
                     <PasskeyIcon />
                   </div>

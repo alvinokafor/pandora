@@ -5,7 +5,7 @@ import { PandoraBox } from "@/assets/icons";
 
 export default function BoxDetails() {
   return (
-    <AppLayout title="Home - Pandora">
+    <AppLayout title="Box - Pandora">
       <div className="pb-4">
         <Search />
         <div>
