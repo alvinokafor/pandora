@@ -3,6 +3,9 @@ import UserProfileTab from "./userProfileTab";
 import UserStorageBar from "./userStorageBar";
 import UserFilesTable from "./user-files-table";
 import UserPasskeysTable from "./user-passkeys-table";
+import AddBeneficiaryModal from "./add-beneficiary-modal";
+import AddFileModal from "./add-file-modal";
+import AddPasskeyModal from "./add-passkey-modal";
 
 export {
   UserActivityTable,
@@ -10,4 +13,7 @@ export {
   UserStorageBar,
   UserFilesTable,
   UserPasskeysTable,
+  AddBeneficiaryModal,
+  AddFileModal,
+  AddPasskeyModal,
 };

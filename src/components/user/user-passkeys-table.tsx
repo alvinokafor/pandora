@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { PasskeyIcon, KebabMenu, AddIconGrey } from "@/assets/icons";
+import { AddPasskeyModal } from "./add-passkey-modal";
 
 interface passkeyProps {
   passkeyName: string;
@@ -54,9 +55,7 @@ export default function UserPasskeysTable() {
     <div className="pt-2">
       <div className="flex justify-between items-center pb-3">
         <h2 className="text-gun-metal font-medium">Passkeys</h2>
-        <button className="border border-gray-300 text-gray-700 text-sm py-2 px-3 rounded-lg transition-all duration-100 hover:text-gray-800 hover:shadow-sm hover:underline flex items-center gap-x-1">
-          <AddIconGrey /> New Passkey
-        </button>
+        <AddPasskeyModal />
       </div>
 
       <div className=" h-[250px] overflow-y-scroll">
