@@ -20,6 +20,7 @@ import AddIconGrey from "./addIconGrey";
 import PandoraBox from "./pandoraBox";
 import ReuploadIcon from "./reuploadIcon";
 import CopyIcon from "./copyIcon";
+import UploadIcon from "./uploadIcon";
 
 export {
   LoadingIcon,
@@ -44,4 +45,5 @@ export {
   PandoraBox,
   ReuploadIcon,
   CopyIcon,
+  UploadIcon,
 };

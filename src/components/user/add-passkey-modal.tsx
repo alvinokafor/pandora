@@ -1,13 +1,6 @@
 import { Copy } from "lucide-react";
-import {
-  CreateBox,
-  BoxIcon,
-  PasskeyIcon,
-  AddIcon,
-  AddIconGrey,
-} from "@/assets/icons";
+import { PasskeyIcon, AddIconGrey } from "@/assets/icons";
 
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -18,8 +11,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 export function AddPasskeyModal() {
   return (
@@ -37,8 +28,8 @@ export function AddPasskeyModal() {
             </div>
             <DialogTitle className="font-medium">Add Passkey</DialogTitle>
             <DialogDescription>
-              Add a new passkey to your{" "}
-              <span className="font-medium">Finance Passwords</span> box{" "}
+              Add a new passkey to your
+              <span className="font-medium">Finance Passwords</span> box
             </DialogDescription>
           </DialogHeader>
 
@@ -111,7 +102,7 @@ export function AddPasskeyModal() {
                   type="submit"
                   className="basis-1/2 border rounded-lg py-2.5 text-white bg-base-purple"
                 >
-                  Create
+                  Submit
                 </button>
               </DialogFooter>
             </div>

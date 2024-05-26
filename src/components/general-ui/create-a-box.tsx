@@ -48,7 +48,7 @@ export function CreateABox() {
             </div>
 
             <div className="flex flex-col gap-y-1">
-              <label htmlFor="box-name" className="font-medium text-sm">
+              <label htmlFor="description" className="font-medium text-sm">
                 Description
               </label>
               <textarea
