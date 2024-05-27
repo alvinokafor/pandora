@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { PasskeyIcon, KebabMenu, AddIconGrey } from "@/assets/icons";
-import { AddPasskeyModal } from "./add-passkey-modal";
+import AddPasskeyModal from "./add-passkey-modal";
 
 interface passkeyProps {
   passkeyName: string;

@@ -1,4 +1,4 @@
-import { PasskeyIcon, AddIconGrey } from "@/assets/icons";
+import { PeopleIcon } from "@/assets/icons";
 import {
   Dialog,
   DialogClose,
@@ -22,12 +22,12 @@ export default function AddBeneficiaryModal() {
         <div className="max-h-[500px] overflow-y-scroll mt-5 pr-4">
           <DialogHeader className="">
             <div className="pb-4">
-              <PasskeyIcon />
+              <PeopleIcon />
             </div>
-            <DialogTitle className="font-medium">Add Passkey</DialogTitle>
+            <DialogTitle className="font-medium">Add Beneficiaries</DialogTitle>
             <DialogDescription>
-              Add a new passkey to your
-              <span className="font-medium">Finance Passwords</span> box
+              Add beneficiaries to view this file. They wont be notified that
+              they were invited
             </DialogDescription>
           </DialogHeader>
 
@@ -35,53 +35,43 @@ export default function AddBeneficiaryModal() {
             <div className="flex flex-col gap-y-3 mb-4 pt-2 mt-2">
               <div className="flex flex-col gap-y-1">
                 <label
-                  htmlFor="passkey-account"
+                  htmlFor="beneficiary-name"
                   className="font-medium text-sm"
                 >
-                  Account
+                  Name
                 </label>
                 <input
-                  id="passkey-account"
+                  id="beneficiary-name"
                   className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
-                  placeholder="Binance"
+                  placeholder="Firstname Surname"
+                />
+              </div>
+
+              <div className="flex flex-col gap-y-1">
+                <label htmlFor="email" className="font-medium text-sm">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
+                  placeholder="you@untitledui.com"
                 />
               </div>
 
               <div className="flex flex-col gap-y-1">
                 <label
-                  htmlFor="passkey-identifier"
+                  htmlFor="beneficiary-phone"
                   className="font-medium text-sm"
                 >
-                  Identifier
+                  Phone Number
                 </label>
                 <input
-                  id="passkey-identifier"
+                  id="beneficiary-phone"
+                  type="number"
                   className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
                   placeholder="you@untitledui.com"
                 />
-              </div>
-
-              <div className="flex flex-col gap-y-1">
-                <label htmlFor="box-name" className="font-medium text-sm">
-                  Passkey
-                </label>
-                <input
-                  id="box-name"
-                  className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
-                  placeholder="you@untitledui.com"
-                />
-              </div>
-
-              <div className="flex flex-col gap-y-1">
-                <label htmlFor="box-name" className="font-medium text-sm">
-                  Description
-                </label>
-                <textarea
-                  name="description"
-                  rows={4}
-                  placeholder="Enter a Description..."
-                  className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
-                ></textarea>
               </div>
             </div>
 

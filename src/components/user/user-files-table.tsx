@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { PasskeyIcon, KebabMenu, AddIconGrey } from "@/assets/icons";
-import { AddFileModal } from "./add-file-modal";
+import AddFileModal from "./add-file-modal";
 
 interface userFileProps {
   fileName: string;
