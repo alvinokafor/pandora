@@ -21,6 +21,7 @@ import PandoraBox from "./pandoraBox";
 import ReuploadIcon from "./reuploadIcon";
 import CopyIcon from "./copyIcon";
 import UploadIcon from "./uploadIcon";
+import PeopleIcon from "./peopleIcon";
 
 export {
   LoadingIcon,
@@ -46,4 +47,5 @@ export {
   ReuploadIcon,
   CopyIcon,
   UploadIcon,
+  PeopleIcon,
 };

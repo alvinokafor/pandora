@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AddBeneficiaryModal } from "../user";
 
 interface beneficiaryProps {
   beneficiaryName: string;
@@ -64,9 +65,7 @@ export default function BeneficiariesTable() {
           <PandoraBox /> Beneficiaries for Box 1
         </h1>
         <div className="flex items-center gap-x-3">
-          <button className="border border-gray-300 text-charcoal text-sm py-2 px-3 rounded-lg transition-all duration-100 hover:text-gray-800 hover:shadow-sm hover:underline">
-            Add Beneficiaries
-          </button>
+          <AddBeneficiaryModal />
         </div>
       </div>
 

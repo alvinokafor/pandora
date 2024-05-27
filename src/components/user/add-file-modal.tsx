@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export function AddFileModal() {
+export default function AddFileModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>

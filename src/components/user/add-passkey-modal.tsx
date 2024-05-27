@@ -1,6 +1,4 @@
-import { Copy } from "lucide-react";
 import { PasskeyIcon, AddIconGrey } from "@/assets/icons";
-
 import {
   Dialog,
   DialogClose,
@@ -12,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export function AddPasskeyModal() {
+export default function AddPasskeyModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>

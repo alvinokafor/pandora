@@ -21,7 +21,7 @@ export default function PasskeyDetails() {
 
           <div className="flex flex-col gap-y-3">
             <div>
-              <h3 className="font-medium text-lg text-heading-black">
+              <h3 className="font-medium text-base text-heading-black">
                 Description
               </h3>
               <p className="text-slate-grey text-sm">
