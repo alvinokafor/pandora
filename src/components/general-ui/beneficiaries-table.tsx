@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { AddBeneficiaryModal } from "../user";
+import { AddBeneficiaryModal, RemoveBeneficiaryModal } from "../user";
 
 interface beneficiaryProps {
   beneficiaryName: string;
@@ -97,7 +97,13 @@ export default function BeneficiariesTable() {
                 <TableCell className="">{beneficiary.status}</TableCell>
 
                 <TableCell className="">
-                  <p>Remove</p>
+                  {beneficiary.status == "Accepted" ? (
+                    <RemoveBeneficiaryModal />
+                  ) : (
+                    <p className="border rounded-lg text-charcoal w-fit p-2">
+                      Cancel Invite
+                    </p>
+                  )}
                 </TableCell>
               </TableRow>
             ))}

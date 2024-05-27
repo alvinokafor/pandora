@@ -22,6 +22,7 @@ import ReuploadIcon from "./reuploadIcon";
 import CopyIcon from "./copyIcon";
 import UploadIcon from "./uploadIcon";
 import PeopleIcon from "./peopleIcon";
+import RemoveIcon from "./removeIcon";
 
 export {
   LoadingIcon,
@@ -48,4 +49,5 @@ export {
   CopyIcon,
   UploadIcon,
   PeopleIcon,
+  RemoveIcon,
 };

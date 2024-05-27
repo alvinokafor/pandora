@@ -6,6 +6,7 @@ import UserPasskeysTable from "./user-passkeys-table";
 import AddBeneficiaryModal from "./add-beneficiary-modal";
 import AddFileModal from "./add-file-modal";
 import AddPasskeyModal from "./add-passkey-modal";
+import RemoveBeneficiaryModal from "./remove-beneficiary-modal";
 
 export {
   UserActivityTable,
@@ -16,4 +17,5 @@ export {
   AddBeneficiaryModal,
   AddFileModal,
   AddPasskeyModal,
+  RemoveBeneficiaryModal,
 };
