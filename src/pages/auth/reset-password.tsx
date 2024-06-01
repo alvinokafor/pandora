@@ -1,10 +1,11 @@
 import React from "react";
-import { AppLayout } from "@/layouts";
+import { AuthLayout } from "@/layouts";
+import ResetPasswordForm from "@/components/auth/ui/reset-password-form";
 
 export default function ResetPassword() {
   return (
-    <AppLayout title="Reset Password">
-      <div>reset-password</div>
-    </AppLayout>
+    <AuthLayout title="Reset Password">
+      <ResetPasswordForm />
+    </AuthLayout>
   );
 }

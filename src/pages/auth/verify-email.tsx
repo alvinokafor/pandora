@@ -1,10 +1,11 @@
 import React from "react";
-import { AppLayout } from "@/layouts";
+import { AuthLayout } from "@/layouts";
+import VerifyEmailForm from "@/components/auth/ui/verify-email-form";
 
 export default function VerifyEmail() {
   return (
-    <AppLayout title="Verify your Email">
-      <div>verify-email</div>
-    </AppLayout>
+    <AuthLayout title="Verify your Email">
+      <VerifyEmailForm />
+    </AuthLayout>
   );
 }

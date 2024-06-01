@@ -1,3 +1,4 @@
+import AuthLayout from "./AuthLayout";
 import AppLayout from "./AppLayout";
 
-export { AppLayout };
+export { AuthLayout, AppLayout };

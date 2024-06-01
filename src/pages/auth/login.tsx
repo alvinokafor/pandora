@@ -1,10 +1,11 @@
 import React from "react";
-import { AppLayout } from "@/layouts";
+import { AuthLayout } from "@/layouts";
+import LoginForm from "@/components/auth/ui/login-form";
 
 export default function Login() {
   return (
-    <AppLayout title="Login - Pandora">
-      <div>login</div>
-    </AppLayout>
+    <AuthLayout title="Login - Pandora">
+      <LoginForm />
+    </AuthLayout>
   );
 }
