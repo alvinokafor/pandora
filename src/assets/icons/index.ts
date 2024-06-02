@@ -23,6 +23,7 @@ import CopyIcon from "./copyIcon";
 import UploadIcon from "./uploadIcon";
 import PeopleIcon from "./peopleIcon";
 import RemoveIcon from "./removeIcon";
+import EmptyPaperIcon from "./emptyPaperIcon";
 
 export {
   LoadingIcon,
@@ -50,4 +51,5 @@ export {
   UploadIcon,
   PeopleIcon,
   RemoveIcon,
+  EmptyPaperIcon,
 };

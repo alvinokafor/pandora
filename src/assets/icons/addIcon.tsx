@@ -12,9 +12,9 @@ export default function AddIcon() {
       <path
         d="M7.00008 1.16699V12.8337M1.16675 7.00033H12.8334"
         stroke="#6941C6"
-        stroke-width="1.67"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.67"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
