@@ -2,7 +2,7 @@ import React from "react";
 
 export default function UserProfileForm() {
   return (
-    <div className="px-4 p-2">
+    <div className="p-4">
       <div className="flex justify-between items-center pb-4">
         <section>
           <h3 className="font-medium text-base text-heading-black pb-2">
@@ -18,13 +18,17 @@ export default function UserProfileForm() {
       <form action="">
         <div className="flex flex-col gap-y-3 mb-4 pt-2 mt-2">
           <div className="flex flex-col gap-y-1">
-            <label htmlFor="beneficiary-name" className="font-medium text-sm">
+            <label
+              htmlFor="beneficiary-name"
+              className="font-medium text-sm text-charcoal"
+            >
               Name
             </label>
             <input
               id="beneficiary-name"
-              className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
+              className="border rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
               placeholder="Firstname Surname"
+              readOnly
             />
           </div>
 
@@ -35,8 +39,9 @@ export default function UserProfileForm() {
             <input
               id="email"
               type="email"
-              className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
+              className="border rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
               placeholder="you@untitledui.com"
+              readOnly
             />
           </div>
 
@@ -47,8 +52,9 @@ export default function UserProfileForm() {
             <input
               id="beneficiary-phone"
               type="number"
-              className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
+              className="border rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
               placeholder="you@untitledui.com"
+              readOnly
             />
           </div>
         </div>
