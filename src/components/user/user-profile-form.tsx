@@ -1,6 +1,19 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export default function UserProfileForm() {
+  // const { isPending, error, data } = useQuery({
+  //   queryKey: ['repoData'],
+  //   queryFn: () =>
+  //     fetch('https://api.github.com/repos/TanStack/query').then((res) =>
+  //       res.json(),
+  //     ),
+  // })
+
+  // if (isPending) return 'Loading...'
+
+  // if (error) return 'An error has occurred: ' + error.message
+
   return (
     <div className="p-4">
       <div className="flex justify-between items-center pb-4">
@@ -26,9 +39,8 @@ export default function UserProfileForm() {
             </label>
             <input
               id="beneficiary-name"
-              className="border rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
+              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
               placeholder="Firstname Surname"
-              readOnly
             />
           </div>
 
@@ -39,9 +51,8 @@ export default function UserProfileForm() {
             <input
               id="email"
               type="email"
-              className="border rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
+              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
               placeholder="you@untitledui.com"
-              readOnly
             />
           </div>
 
@@ -52,9 +63,8 @@ export default function UserProfileForm() {
             <input
               id="beneficiary-phone"
               type="number"
-              className="border rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
+              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
               placeholder="you@untitledui.com"
-              readOnly
             />
           </div>
         </div>
