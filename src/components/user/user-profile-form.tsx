@@ -2,17 +2,17 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
 export default function UserProfileForm() {
-  // const { isPending, error, data } = useQuery({
-  //   queryKey: ['repoData'],
-  //   queryFn: () =>
-  //     fetch('https://api.github.com/repos/TanStack/query').then((res) =>
-  //       res.json(),
-  //     ),
-  // })
+  const { isPending, error, data, isFetched } = useQuery({
+    queryKey: ["countries"],
+    queryFn: () =>
+      fetch("https://restcountries.com/v3.1/all").then((res) => res.json()),
+  });
 
-  // if (isPending) return 'Loading...'
+  if (isPending) return "Loading...";
 
-  // if (error) return 'An error has occurred: ' + error.message
+  if (error) return "An error has occurred: " + error.message;
+
+  if (isFetched) console.log(data);
 
   return (
     <div className="p-4">
