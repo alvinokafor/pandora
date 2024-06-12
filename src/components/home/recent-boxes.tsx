@@ -67,7 +67,7 @@ export default function RecentBoxes() {
   return (
     <div className="border border-gray-200 py-5 rounded-md">
       <div className="px-5">
-        <h2 className="heading-black font-medium pb-2">Recent</h2>
+        <h2 className="text-charcoal font-medium pb-2">Recent</h2>
       </div>
       <div>
         <Table>

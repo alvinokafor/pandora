@@ -34,57 +34,59 @@ export function CreateABox() {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex flex-col gap-y-3 mb-4 pt-2">
-          <div className="flex flex-col gap-y-1">
-            <label htmlFor="box-name" className="font-medium text-sm">
-              Box Name
-            </label>
-            <input
-              id="box-name"
-              className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
-              placeholder="Untitled Box"
-            />
+        <form action="">
+          <div className="flex flex-col gap-y-3 mb-4 pt-2">
+            <div className="flex flex-col gap-y-1">
+              <label htmlFor="box-name" className="font-medium text-sm">
+                Box Name
+              </label>
+              <input
+                id="box-name"
+                className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
+                placeholder="Untitled Box"
+              />
+            </div>
+
+            <div className="flex flex-col gap-y-1">
+              <label htmlFor="description" className="font-medium text-sm">
+                Description
+              </label>
+              <textarea
+                name="description"
+                rows={4}
+                placeholder="Enter a Description..."
+                className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
+              ></textarea>
+            </div>
+
+            <div className="flex flex-col gap-y-3 mt-2">
+              <p className="text-sm text-slate-grey">No beneficiary Added</p>
+              <p className="flex items-center text-primary-shade text-sm gap-x-2">
+                <AddIcon /> Add Beneficiary
+              </p>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-y-1">
-            <label htmlFor="box-name" className="font-medium text-sm">
-              Description
-            </label>
-            <textarea
-              name="description"
-              rows={4}
-              placeholder="Enter a Description..."
-              className="border rounded-md py-2 px-3 placeholder:text-slate-grey font-normal text-base focus:outline-none focus:border-slate-800"
-            ></textarea>
-          </div>
+          <div className="">
+            <DialogFooter className="flex gap-x-2">
+              <DialogClose asChild>
+                <button
+                  type="button"
+                  className="basis-1/2 border rounded-lg py-2.5 text-charcoal font-medium"
+                >
+                  Cancel
+                </button>
+              </DialogClose>
 
-          <div className="flex flex-col gap-y-3 mt-2">
-            <p className="text-sm text-slate-grey">No beneficiary Added</p>
-            <p className="flex items-center text-primary-shade text-sm gap-x-2">
-              <AddIcon /> Add Beneficiary
-            </p>
-          </div>
-        </div>
-
-        <div className="">
-          <DialogFooter className="flex gap-x-2">
-            <DialogClose asChild>
               <button
-                type="button"
-                className="basis-1/2 border rounded-lg py-2.5 text-charcoal font-medium"
+                type="submit"
+                className="basis-1/2 border rounded-lg py-2.5 text-white bg-base-purple"
               >
-                Cancel
+                Create
               </button>
-            </DialogClose>
-
-            <button
-              type="submit"
-              className="basis-1/2 border rounded-lg py-2.5 text-white bg-base-purple"
-            >
-              Create
-            </button>
-          </DialogFooter>
-        </div>
+            </DialogFooter>
+          </div>
+        </form>
       </DialogContent>
     </Dialog>
   );

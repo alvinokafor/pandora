@@ -16,6 +16,14 @@ import NotificationBell from "./notificationBell";
 import ChevronDown from "./chevron-down";
 import ShareOrangeBg from "./shareOrangeBg";
 import AddIcon from "./addIcon";
+import AddIconGrey from "./addIconGrey";
+import PandoraBox from "./pandoraBox";
+import ReuploadIcon from "./reuploadIcon";
+import CopyIcon from "./copyIcon";
+import UploadIcon from "./uploadIcon";
+import PeopleIcon from "./peopleIcon";
+import RemoveIcon from "./removeIcon";
+import EmptyPaperIcon from "./emptyPaperIcon";
 
 export {
   LoadingIcon,
@@ -36,4 +44,12 @@ export {
   ChevronDown,
   ShareOrangeBg,
   AddIcon,
+  AddIconGrey,
+  PandoraBox,
+  ReuploadIcon,
+  CopyIcon,
+  UploadIcon,
+  PeopleIcon,
+  RemoveIcon,
+  EmptyPaperIcon,
 };
