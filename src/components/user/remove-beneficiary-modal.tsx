@@ -56,7 +56,7 @@ export default function RemoveBeneficiaryModal() {
                     htmlFor="dont-show-again"
                     className="ml-2 text-sm text-gray-700"
                   >
-                    Don't show again
+                    Don&apos;t show again
                   </label>
                 </div>
 

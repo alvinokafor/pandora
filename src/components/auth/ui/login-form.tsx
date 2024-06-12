@@ -67,7 +67,7 @@ export default function LoginForm() {
 
       <div className="mt-8">
         <p className="text-slate-gray text-sm">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/auth/create-account">
             <span className="text-sm text-primary-shade">Sign Up</span>
           </Link>

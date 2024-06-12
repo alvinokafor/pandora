@@ -8,10 +8,6 @@ export default function UserProfileForm() {
       fetch("https://restcountries.com/v3.1/all").then((res) => res.json()),
   });
 
-  if (isPending) return "Loading...";
-
-  if (error) return "An error has occurred: " + error.message;
-
   if (isFetched) console.log(data);
 
   return (

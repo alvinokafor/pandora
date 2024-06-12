@@ -2,6 +2,7 @@ import React from "react";
 import { ReuploadIcon, PasskeyIcon, CopyIcon } from "@/assets/icons";
 import { DocumentIcon } from "./icons";
 import { UserProfileTab } from "../user";
+import Image from "next/image";
 
 export default function PasskeyDetails() {
   return (
@@ -15,7 +16,7 @@ export default function PasskeyDetails() {
               <p className="font-medium text-base text-marian-blue">
                 Catalog Password
               </p>
-              <img src="/beneficiaries-img.png" alt="" />
+              <Image src="/beneficiaries-img.png" alt="" />
             </div>
           </div>
 
