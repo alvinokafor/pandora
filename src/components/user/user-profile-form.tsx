@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 export default function UserProfileForm() {
+  const [selectedCountry, setSelectedCountry] = useState("");
   const { isPending, error, data, isFetched } = useQuery({
     queryKey: ["countries"],
     queryFn: () =>
       fetch("https://restcountries.com/v3.1/all").then((res) => res.json()),
   });
 
-  if (isFetched) console.log(data);
+  // if (isFetched) console.log(data);
+
+  const onCountryChangeHandler = (e: any) => {
+    setSelectedCountry(e.target.value);
+    console.log(selectedCountry);
+    console.log("entered on change function");
+  };
 
   return (
     <div className="p-4">
@@ -53,7 +60,34 @@ export default function UserProfileForm() {
           </div>
 
           <div className="flex flex-col gap-y-1">
-            <label htmlFor="beneficiary-phone" className="font-medium text-sm">
+            <label htmlFor="country" className="font-medium text-sm">
+              Country
+            </label>
+            {/* <input
+              id="country"
+              type="number"
+              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
+              placeholder="you@untitledui.com"
+            /> */}
+            <select
+              onChange={onCountryChangeHandler}
+              name="country"
+              id="countryID"
+              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
+            >
+              <option value="">--Select Country--</option>
+              {data.map((country: any) => {
+                return (
+                  <option key={country.name.common} value={country.name.common}>
+                    {country.name.common}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-y-1">
+            <label htmlFor="phoneNumber" className="font-medium text-sm">
               Phone Number
             </label>
             <input
