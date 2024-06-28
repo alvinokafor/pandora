@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Switch } from "@/components/ui/switch";
+import Image from "next/image";
 
 interface CountryArray {
   name: {
@@ -56,7 +58,10 @@ export default function UserProfileForm() {
             Setup two factor authentication for your pandora account{" "}
           </p>
         </section>
-        <section>toggle</section>
+        <section>
+          {" "}
+          <Switch />
+        </section>
       </div>
 
       <form action="">
@@ -95,7 +100,7 @@ export default function UserProfileForm() {
             <div className="border border-[#D0D5DD] rounded-md py-2 px-3 font-normal text-base focus:outline-none focus:border-slate-800 flex items-center gap-x-2">
               <section className="w-5">
                 {selectedCountry && selectedCountryData && (
-                  <img src={selectedCountryData?.flags?.png} alt="flag" />
+                  <Image src={selectedCountryData?.flags?.png} alt="flag" />
                 )}
               </section>
               <section>
@@ -139,7 +144,30 @@ export default function UserProfileForm() {
           </div>
         </div>
       </form>
-      <div></div>
+
+      <div className="py-6 flex flex-col gap-y-6 border-b">
+        <section>
+          <p className="text-sm font-medium text-charcoal">
+            Current Subscription Plan
+          </p>
+          <p className="text-base font-normal text-light-grey">
+            Billed at $34/Month
+          </p>
+        </section>
+
+        <section>
+          <p className="text-sm font-medium text-charcoal">
+            Current Storage Plan
+          </p>
+          <p className="text-base font-normal text-light-grey">30GB</p>
+        </section>
+      </div>
+
+      <div className="flex justify-end py-5">
+        <button className=" px-3 border rounded-lg py-2.5 text-sm text-white bg-base-purple hover:-translate-y-0.5 active:translate-y-0">
+          Update Payment Details
+        </button>
+      </div>
     </div>
   );
 }
