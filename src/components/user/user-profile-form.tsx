@@ -1,21 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+
+interface CountryArray {
+  name: {
+    common: string;
+  };
+  flags: {
+    alt: string;
+    png: string;
+    svg: string;
+  };
+}
 
 export default function UserProfileForm() {
   const [selectedCountry, setSelectedCountry] = useState("");
-  const { isPending, error, data, isFetched } = useQuery({
+  const [selectedCountryData, setSelectedCountryData] =
+    useState<CountryArray | null>(null);
+
+  const { isLoading, error, data, isFetched } = useQuery({
     queryKey: ["countries"],
     queryFn: () =>
       fetch("https://restcountries.com/v3.1/all").then((res) => res.json()),
   });
 
-  // if (isFetched) console.log(data);
+  useEffect(() => {
+    if (selectedCountry && isFetched) {
+      const countryData = data.find(
+        (country: CountryArray) => country.name.common === selectedCountry
+      );
+      setSelectedCountryData(countryData || null);
+      // console.log(countryData);
+    }
+  }, [selectedCountry, data, isFetched]);
 
-  const onCountryChangeHandler = (e: any) => {
+  const onCountryChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(e.target.value);
-    console.log(selectedCountry);
-    console.log("entered on change function");
+    // console.log("Selected country from on Change Handler:", e.target.value);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading countries</div>;
 
   return (
     <div className="p-4">
@@ -63,27 +87,33 @@ export default function UserProfileForm() {
             <label htmlFor="country" className="font-medium text-sm">
               Country
             </label>
-            {/* <input
-              id="country"
-              type="number"
-              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
-              placeholder="you@untitledui.com"
-            /> */}
-            <select
-              onChange={onCountryChangeHandler}
-              name="country"
-              id="countryID"
-              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
-            >
-              <option value="">--Select Country--</option>
-              {data.map((country: any) => {
-                return (
-                  <option key={country.name.common} value={country.name.common}>
-                    {country.name.common}
-                  </option>
-                );
-              })}
-            </select>
+
+            <div className="border border-[#D0D5DD] rounded-md py-2 px-3 font-normal text-base focus:outline-none focus:border-slate-800 flex items-center gap-x-2">
+              <section className="w-5">
+                {selectedCountry && selectedCountryData && (
+                  <img src={selectedCountryData?.flags?.png} alt="flag" />
+                )}
+              </section>
+              <section>
+                <select
+                  onChange={onCountryChangeHandler}
+                  name="country"
+                  id="countryID"
+                  className="bg-transparent text-base focus:outline-none focus:border-slate-800"
+                >
+                  <option value="">--Select Country--</option>
+                  {isFetched &&
+                    data.map((country: CountryArray) => (
+                      <option
+                        key={country.name.common}
+                        value={country.name.common}
+                      >
+                        {country.name.common}
+                      </option>
+                    ))}
+                </select>
+              </section>
+            </div>
           </div>
 
           <div className="flex flex-col gap-y-1">
