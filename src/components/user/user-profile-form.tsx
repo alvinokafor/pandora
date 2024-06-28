@@ -10,6 +10,10 @@ interface CountryArray {
     png: string;
     svg: string;
   };
+  idd: {
+    root: string;
+    suffixes: string[];
+  };
 }
 
 export default function UserProfileForm() {
@@ -120,12 +124,18 @@ export default function UserProfileForm() {
             <label htmlFor="phoneNumber" className="font-medium text-sm">
               Phone Number
             </label>
-            <input
-              id="beneficiary-phone"
-              type="number"
-              className="border border-[#D0D5DD] rounded-md py-2 px-3 placeholder:text-heading-black font-normal text-base focus:outline-none focus:border-slate-800"
-              placeholder="you@untitledui.com"
-            />
+            <div className="border border-[#D0D5DD] rounded-md py-2 px-3 flex items-center">
+              <section className="pr-2 border-r border-[#D0D5DD] text-base">
+                {selectedCountryData?.idd?.root}
+                {selectedCountryData?.idd?.suffixes}
+              </section>
+              <input
+                id="phoneNumber"
+                type="number"
+                className="pl-2 placeholder:text-[#939599] font-normal text-base focus:outline-none focus:border-slate-800"
+                placeholder="Your phone number"
+              />
+            </div>
           </div>
         </div>
       </form>
