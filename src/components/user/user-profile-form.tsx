@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Switch } from "@/components/ui/switch";
 import Image from "next/image";
+import Setup2faModal from "./setup-2fa-modal";
+import { Switch } from "../ui/switch";
 
 interface CountryArray {
   name: {
@@ -59,8 +60,8 @@ export default function UserProfileForm() {
           </p>
         </section>
         <section>
-          {" "}
-          <Switch />
+          <Setup2faModal />
+          {/* <Switch /> */}
         </section>
       </div>
 
