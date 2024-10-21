@@ -58,10 +58,10 @@ export default function UserProfileForm() {
           <p className="text-slate-grey text-sm">
             Setup two factor authentication for your pandora account{" "}
           </p>
+          <Switch />
         </section>
         <section>
           <Setup2faModal />
-          {/* <Switch /> */}
         </section>
       </div>
 
