@@ -16,3 +16,32 @@ export type IVerOTP = {
 export type IMessageRes = {
   message: string;
 };
+
+export type IVerifyEmail = {
+  session_id: string;
+  code: string;
+};
+
+export type IUserResponse = {
+  message: string;
+  data: {
+    user: {
+      email: string;
+      first_name: string;
+      last_name: string;
+    };
+    token: string;
+  };
+};
+
+export type ISessionIdData = {
+  message: string;
+  data: {
+    session_id: string;
+  };
+};
+
+export type IResetPassword = {
+  session_id: string;
+  password: string;
+};
