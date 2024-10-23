@@ -19,33 +19,44 @@ export function useTanstackQuery<B>({
 }
 
 // Custom mutation hook
-export function useTanstackMutation<
-  TData,
-  TVariables,
-  TError = unknown,
-  TContext = unknown
->(
-  mutationCallback: ({
-    payload,
+// export function useTanstackMutation<
+//   TData,
+//   TVariables,
+//   TError = unknown,
+//   TContext = unknown
+// >(
+//   {
+//     mutationCallback,
+//     params,
+//   }: {
+//     mutationCallback: ({
+//       payload,
+//       params,
+//     }: MutationCallBackArgs<TVariables>) => Promise<TData>;
+//     params?: string;
+//   }
+// ): UseMutationResult<TData, TError, TVariables, TContext> {
+//   return useMutation<TData, TError, TVariables, TContext>({
+//     mutationFn: (payload: TVariables) => mutationCallback({ payload, params }),
+//   });
+// }
+
+export const tanstackWrapper = {
+  mutation: <TData, TVariables, TError = unknown, TContext = unknown>({
+    mutationCallback,
     params,
-  }: MutationCallBackArgs<TVariables>) => Promise<TData>,
-  params?: string
-): UseMutationResult<TData, TError, TVariables, TContext> {
-  return useMutation<TData, TError, TVariables, TContext>({
-    mutationFn: (payload: TVariables) => mutationCallback({ payload, params }),
-  });
-}
+  }: {
+    mutationCallback: ({
+      payload,
+      params,
+    }: MutationCallBackArgs<TVariables>) => Promise<TData>;
+    params?: string;
+  }): UseMutationResult<TData, TError, TVariables, TContext> => {
+    return useMutation<TData, TError, TVariables, TContext>({
+      mutationFn: (payload: TVariables) =>
+        mutationCallback({ payload, params }),
+    });
+  },
+};
 
-class TanstackWrapper {
-  private static instance: TanstackWrapper;
-  private constructor() {}
-
-  public static getInstance() {
-    if (!TanstackWrapper.instance) {
-      TanstackWrapper.instance = new TanstackWrapper();
-    }
-    return TanstackWrapper.instance;
-  }
-}
-
-export const tanstackWrapper = TanstackWrapper.getInstance();
+export default tanstackWrapper;
