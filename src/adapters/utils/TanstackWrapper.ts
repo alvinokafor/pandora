@@ -5,7 +5,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 
-export const tanstackWrapper = {
+export const TanstackWrapper = {
   mutation: <TData, TVariables, TError = unknown, TContext = unknown>({
     mutationCallback,
     params,
@@ -29,4 +29,4 @@ export const tanstackWrapper = {
   },
 };
 
-export default tanstackWrapper;
+export default TanstackWrapper;

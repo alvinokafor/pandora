@@ -1,6 +1,6 @@
 import { MutationCallBackArgs } from "./types/AdapterTypes";
 import ApiService from "./ApiService";
-import tanstackWrapper from "./utils/TanstackWrapper";
+import TanstackWrapper from "./utils/TanstackWrapper";
 import {
   IUserLogin,
   IUserRegister,
@@ -14,8 +14,8 @@ import {
 
 //api service initializer
 const authService = new ApiService("auth");
-const useAuthMutation = tanstackWrapper.mutation;
-const useAuthQuery = tanstackWrapper.query;
+const useAuthMutation = TanstackWrapper.mutation;
+const useAuthQuery = TanstackWrapper.query;
 
 const AuthAdapter = {
   loginUser: async ({
@@ -113,4 +113,4 @@ const AuthAdapter = {
   },
 };
 
-export { AuthAdapter, useAuthMutation };
+export { AuthAdapter, useAuthMutation, useAuthQuery };
