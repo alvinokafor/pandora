@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidator, LoginSchema } from "@/lib/validations/authValidator";
-import { useExampleMutation, ExampleAdapter } from "@/adapters/ExampleAdapter";
+// import { useExampleMutation, ExampleAdapter } from "@/adapters/ExampleAdapter";
 import { LoadingIcon } from "@/assets/icons";
 import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 export default function LoginForm() {
   const { register, handleSubmit, setFocus } = useForm<LoginSchema>({
@@ -14,10 +16,25 @@ export default function LoginForm() {
   });
 
   // example of how to use the mutation adapter
-  const { mutateAsync, isPending } = useExampleMutation(
-    ExampleAdapter.exampleMutationApiCall,
-    ""
-  );
+  // const { mutateAsync, isPending } = useExampleMutation(
+  //   ExampleAdapter.exampleMutationApiCall,
+  //   ""
+  // );
+
+  const loginUser = async (payload: any) => {
+    const response = await axios.post("/login", payload);
+    return response.data;
+  };
+
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      console.log("User Logged In:", data);
+    },
+    onError: (error) => {
+      console.error("Error logging in User:", error);
+    },
+  });
 
   const handleLogin = async (data: LoginSchema) => {
     try {
