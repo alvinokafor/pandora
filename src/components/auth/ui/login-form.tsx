@@ -1,8 +1,52 @@
+"use client";
+
 import React from "react";
-import { GoogleColorIcon } from "@/assets/icons";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { GoogleColorIcon } from "@/assets/icons";
+import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
+import { loginValidator, LoginSchema } from "@/lib/validations/authValidator";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function LoginForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setFocus,
+    setValue,
+  } = useForm<LoginSchema>({
+    resolver: zodResolver(loginValidator),
+    defaultValues: {
+      remember_me: false,
+    },
+  });
+
+  // console.log(errors);
+
+  const { mutateAsync, isPending } = useAuthMutation({
+    mutationCallback: AuthAdapter.loginUser,
+  });
+
+  const onSubmit = async (data: LoginSchema) => {
+    console.log(data);
+    try {
+      await mutateAsync(data);
+      toast.success("Login Successful");
+    } catch (error) {
+      toast.error("Invalid Credentials");
+    }
+  };
+
+  // const onSubmit = () => {
+  //   console.log("you have entered the submit function");
+  // };
+
   return (
     <section className="text-center md:w-[360px]">
       <div>
@@ -10,58 +54,92 @@ export default function LoginForm() {
           Log in to your account
         </h1>
         <p className="pb-4 text-base font-medium text-slate-grey">
-          Welcome back! Please enter your details.{" "}
+          Welcome back! Please enter your details.
         </p>
       </div>
-      <form action="">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="text-left mb-5">
-          <label
+          <Label
             htmlFor="email"
             className="block pl-1 text-sm font-medium leading-6 text-charcoal"
           >
             Email
-          </label>
+          </Label>
           <div className="mt-2">
-            <input
+            <Input
               id="email"
-              name="email"
               type="email"
               autoComplete="email"
               placeholder="Enter Your Email..."
               className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
+              {...register("email")}
             />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">
+                {errors.email.message}
+              </p>
+            )}
           </div>
         </div>
 
-        <div className="text-left ">
-          <label
+        <div className="text-left mb-5">
+          <Label
             htmlFor="password"
             className="block pl-1 text-sm font-medium leading-6 text-charcoal"
           >
             Password
-          </label>
-          <input
-            type="password"
+          </Label>
+          <Input
             id="password"
+            type="password"
             placeholder="Enter Your Password..."
             className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
+            {...register("password")}
           />
+          {errors.password && (
+            <p className="mt-1 text-sm text-red-600">
+              {errors.password.message}
+            </p>
+          )}
         </div>
 
-        <div className="flex justify-end mt-4">
+        <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="remember_me"
+              {...register("remember_me")}
+              onCheckedChange={(checked) => {
+                if (typeof checked === "boolean") {
+                  setValue("remember_me", checked);
+                }
+              }}
+            />
+            <Label htmlFor="remember_me" className="text-sm text-charcoal">
+              Remember me
+            </Label>
+          </div>
           <Link href="/auth/forgot-password">
             <p className="text-sm text-primary-shade">Forgot Password?</p>
           </Link>
         </div>
 
         <div className="mt-6 space-y-3">
-          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]">
-            Sign In
-          </button>
-          <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
+          <Button
+            type="submit"
+            disabled={isPending}
+            onClick={() => console.log("Submit Button Clicked")}
+            className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
+          >
+            {isPending ? "Signing In..." : "Sign In"}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full"
+          >
             <GoogleColorIcon />
             Sign in with Google
-          </button>
+          </Button>
         </div>
       </form>
 
