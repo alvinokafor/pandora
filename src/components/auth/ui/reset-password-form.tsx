@@ -1,6 +1,38 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
+import {
+  resetPasswordValidator,
+  ResetPasswordSchema,
+} from "@/lib/validations/authValidator";
 
 export default function ResetPasswordForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ResetPasswordSchema>({
+    resolver: zodResolver(resetPasswordValidator),
+  });
+
+  const { mutateAsync, isPending } = useAuthMutation({
+    mutationCallback: AuthAdapter.resetPassword,
+  });
+
+  const session_id: string = "abcdefghijklmnopqrstuvwxyz";
+
+  const onSubmit = async (data: ResetPasswordSchema) => {
+    console.log(data);
+    try {
+      const res = await mutateAsync({ ...data, session_id });
+      console.log(res);
+      toast.success("Sign Up Successful");
+    } catch (error) {
+      toast.error("Something went wrong. Please try again");
+    }
+  };
   return (
     <section className="text-center md:w-[360px]">
       <div>
@@ -8,7 +40,7 @@ export default function ResetPasswordForm() {
           Reset Your Password{" "}
         </h1>
       </div>
-      <form action="">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="text-left mb-5">
           <label
             htmlFor="password"
@@ -21,6 +53,7 @@ export default function ResetPasswordForm() {
             id="password"
             placeholder="Enter Your Password..."
             className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
+            {...register("password")}
           />
         </div>
 

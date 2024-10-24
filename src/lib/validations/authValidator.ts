@@ -32,3 +32,12 @@ export const emailValidator = z.object({
 });
 
 export type EmailSchema = z.infer<typeof emailValidator>;
+
+export const resetPasswordValidator = z.object({
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters" })
+    .max(32, { message: "Password must not be more than 32 characters" }),
+});
+
+export type ResetPasswordSchema = z.infer<typeof resetPasswordValidator>;
