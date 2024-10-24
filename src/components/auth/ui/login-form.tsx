@@ -43,10 +43,6 @@ export default function LoginForm() {
     }
   };
 
-  // const onSubmit = () => {
-  //   console.log("you have entered the submit function");
-  // };
-
   return (
     <section className="text-center md:w-[360px]">
       <div>
