@@ -73,7 +73,10 @@ export default function ResetPasswordForm() {
         </div>
 
         <div className="mt-6 space-y-3">
-          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]">
+          <button
+            className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
+            type="submit"
+          >
             Continue
           </button>
         </div>
