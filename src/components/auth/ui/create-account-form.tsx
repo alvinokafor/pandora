@@ -1,8 +1,39 @@
 import React from "react";
 import { GoogleColorIcon, FacebookLogo } from "@/assets/icons";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { useObfuscationToggle } from "@/hooks";
+import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
+import { signInValidator, SignInSchema } from "@/lib/validations/authValidator";
 
 export default function CreateAccountForm() {
+  const [InputType, Icon, setVisible] = useObfuscationToggle();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInSchema>({
+    resolver: zodResolver(signInValidator),
+  });
+
+  const { mutateAsync, isPending } = useAuthMutation({
+    mutationCallback: AuthAdapter.registerUser,
+  });
+
+  const onSubmit = async (data: SignInSchema) => {
+    console.log(data);
+    try {
+      const res = await mutateAsync(data);
+      console.log(res);
+      toast.success("Sign Up Successful");
+    } catch (error) {
+      toast.error("Something went wrong. Please try again");
+    }
+  };
+
   return (
     <section className="text-center md:w-[360px] -mt-4">
       <div>
@@ -13,7 +44,8 @@ export default function CreateAccountForm() {
           Start your 30-day free trial.{" "}
         </p>
       </div>
-      <form action="">
+
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="text-left mb-4">
           <label
             htmlFor="email"
@@ -24,16 +56,21 @@ export default function CreateAccountForm() {
           <div className="">
             <input
               id="email"
-              name="email"
               type="email"
               autoComplete="email"
               placeholder="Enter Your Email..."
               className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
+              {...register("email")}
             />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">
+                {errors.email.message}
+              </p>
+            )}
           </div>
         </div>
 
-        <div className="text-left ">
+        <div className="text-left relative">
           <label
             htmlFor="password"
             className="block pl-1 text-sm font-medium leading-6 text-charcoal"
@@ -41,16 +78,32 @@ export default function CreateAccountForm() {
             Password
           </label>
           <input
-            type="password"
+            type={InputType}
             id="password"
             placeholder="Enter Your Password..."
             className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
+            {...register("password")}
           />
+          <div
+            className="absolute top-[45%] right-4 pt-1"
+            onClick={() => setVisible((visible) => !visible)}
+          >
+            {Icon}
+          </div>
+          {errors.password && (
+            <p className="mt-1 text-sm text-red-600">
+              {errors.password.message}
+            </p>
+          )}
         </div>
 
         <div className="mt-5 space-y-2">
-          <button className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg  transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]">
-            Get started{" "}
+          <button
+            className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg  transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
+            type="submit"
+            disabled={isPending}
+          >
+            {isPending ? "Setting up your account" : "Get Started"}
           </button>
           <p>OR</p>
           <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">

@@ -22,7 +22,7 @@ const AuthAdapter = {
     payload,
   }: MutationCallBackArgs<IUserLogin>): Promise<IUserResponse> => {
     const res = await authService.mutate<IUserLogin, IUserResponse>({
-      slug: "login",
+      slug: "login/",
       payload,
       type: "JSON",
       method: "POST",
@@ -34,7 +34,7 @@ const AuthAdapter = {
     payload,
   }: MutationCallBackArgs<IUserRegister>): Promise<ISessionIdData> => {
     const res = await authService.mutate<IUserRegister, ISessionIdData>({
-      slug: "signup",
+      slug: "signup/",
       payload,
       type: "JSON",
       method: "POST",
@@ -42,15 +42,17 @@ const AuthAdapter = {
     return res.data;
   },
 
-  //   logoutUser: async (): Promise<IMessageRes> => {
-  //     const res = await authService.mutate<{}, IMessageRes>({
-  //       slug: "logout",
-  //       {},
-  //       type: "JSON",
-  //       method: "POST",
-  //     });
-  //     return res.data;
-  //   },
+  logoutUser: async ({
+    payload,
+  }: MutationCallBackArgs<{}>): Promise<IMessageRes> => {
+    const res = await authService.mutate<{}, IMessageRes>({
+      slug: "logout/",
+      payload,
+      type: "JSON",
+      method: "POST",
+    });
+    return res.data;
+  },
 
   resendVerificationOTP: async ({
     payload,
