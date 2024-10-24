@@ -28,7 +28,7 @@ export default function ResetPasswordForm() {
     try {
       const res = await mutateAsync({ ...data, session_id });
       console.log(res);
-      toast.success("Sign Up Successful");
+      toast.success("Password reset Successful");
     } catch (error) {
       toast.error("Something went wrong. Please try again");
     }
@@ -76,8 +76,9 @@ export default function ResetPasswordForm() {
           <button
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
             type="submit"
+            disabled={isPending}
           >
-            Continue
+            {isPending ? "Please wait..." : "Continue"}
           </button>
         </div>
       </form>

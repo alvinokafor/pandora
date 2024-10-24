@@ -41,3 +41,12 @@ export const resetPasswordValidator = z.object({
 });
 
 export type ResetPasswordSchema = z.infer<typeof resetPasswordValidator>;
+
+export const verificationCodeValidator = z.object({
+  code: z
+    .string()
+    .length(6, { message: "Verification code must be exactly 6 digits" })
+    .regex(/^\d+$/, { message: "Verification code must only contain digits" }),
+});
+
+export type VerificationCodeSchema = z.infer<typeof verificationCodeValidator>;

@@ -63,8 +63,9 @@ export default function ForgotPasswordForm() {
           <button
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
             type="submit"
+            disabled={isPending}
           >
-            Continue
+            {isPending ? "Please wait..." : "Continue"}
           </button>
         </div>
       </form>

@@ -8,22 +8,46 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
+import {
+  VerificationCodeSchema,
+  verificationCodeValidator,
+} from "@/lib/validations/authValidator";
 
 type FormValues = {
   code: string;
 };
 
 export default function VerifyEmailForm() {
-  const { control, handleSubmit } = useForm<FormValues>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<VerificationCodeSchema>({
+    resolver: zodResolver(verificationCodeValidator),
     defaultValues: {
       code: "",
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data); // This will log the submitted code
-    // Add your form submission logic here
+  const { mutateAsync, isPending } = useAuthMutation({
+    mutationCallback: AuthAdapter.verifyUserEmail,
+  });
+
+  const session_id: string = "abcdefghijklmnopqrstuvwxyz";
+
+  const onSubmit = async (data: VerificationCodeSchema) => {
+    console.log({ ...data, session_id });
+    try {
+      const res = await mutateAsync({ ...data, session_id });
+      console.log(res);
+      toast.success("Email Verification Successful");
+    } catch (error) {
+      toast.error("Something went wrong. Please try again");
+    }
   };
 
   return (
@@ -33,8 +57,8 @@ export default function VerifyEmailForm() {
           Verify your email
         </h1>
         <p className="pb-4 text-base font-medium text-slate-grey">
-          Input the 4 digit verification code sent to your email
-          alvin2k99@gmail.com{" "}
+          Input the 6 digit verification code sent to your email
+          alvin2k99@gmail.com
         </p>
       </div>
       <form
@@ -44,21 +68,23 @@ export default function VerifyEmailForm() {
         <Controller
           name="code"
           control={control}
-          rules={{ required: true, minLength: 4, maxLength: 4 }}
+          rules={{ required: true, minLength: 6, maxLength: 6 }}
           render={({ field }) => (
             <InputOTP
-              maxLength={4}
+              maxLength={6}
               value={field.value}
               onChange={(value) => field.onChange(value)}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
                 <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
               </InputOTPGroup>
               <InputOTPSeparator />
               <InputOTPGroup>
-                <InputOTPSlot index={2} />
                 <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
               </InputOTPGroup>
             </InputOTP>
           )}
@@ -67,8 +93,9 @@ export default function VerifyEmailForm() {
         <Button
           type="submit"
           className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
+          disabled={isPending}
         >
-          Continue
+          {isPending ? "Please wait..." : "Continue"}
         </Button>
       </form>
 
