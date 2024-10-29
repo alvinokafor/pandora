@@ -56,8 +56,8 @@ const AuthAdapter = {
 
   resendVerificationOTP: async ({
     payload,
-  }: MutationCallBackArgs<IVerOTP>): Promise<IMessageRes> => {
-    const res = await authService.mutate<IVerOTP, IMessageRes>({
+  }: MutationCallBackArgs<IVerOTP>): Promise<ISessionIdData> => {
+    const res = await authService.mutate<IVerOTP, ISessionIdData>({
       slug: "signup/resend-otp/",
       payload,
       type: "JSON",

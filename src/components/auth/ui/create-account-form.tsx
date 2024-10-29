@@ -18,9 +18,12 @@ export default function CreateAccountForm() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<SignInSchema>({
     resolver: zodResolver(signInValidator),
   });
+
+  const email = watch("email");
 
   const { mutateAsync, isPending } = useAuthMutation({
     mutationCallback: AuthAdapter.registerUser,
@@ -32,7 +35,9 @@ export default function CreateAccountForm() {
       const res = await mutateAsync(data);
       console.log(res);
       toast.success("Sign Up Successful");
-      router.push(`/auth/verify-email?sessionId=${res.data.session_id}`);
+      router.push(
+        `/auth/verify-email?sessionId=${res.data.session_id}&email=${email}`
+      );
     } catch (error) {
       toast.error("Something went wrong. Please try again");
     }

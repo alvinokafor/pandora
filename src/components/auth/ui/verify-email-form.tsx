@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import { useForm, Controller } from "react-hook-form";
 import {
   InputOTP,
@@ -15,8 +15,10 @@ import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import {
   VerificationCodeSchema,
   verificationCodeValidator,
+  emailValidator,
+  EmailSchema,
 } from "@/lib/validations/authValidator";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 type FormValues = {
   code: string;
@@ -34,16 +36,39 @@ export default function VerifyEmailForm() {
     },
   });
   const searchParams = useSearchParams();
+  const router = useRouter();
   const session_id = searchParams.get("sessionId");
-  // console.log(session_id);
-
-  //84afc1ca-6f36-4ae1-af35-9f2a879b46a8
+  const email = searchParams.get("email");
+  console.log(email);
 
   const { mutateAsync, isPending } = useAuthMutation({
     mutationCallback: AuthAdapter.verifyUserEmail,
   });
 
-  // const session_id: string = "abcdefghijklmnopqrstuvwxyz";
+  const resendOTPMutation = useAuthMutation({
+    mutationCallback: AuthAdapter.resendVerificationOTP,
+  });
+
+  const updateURLWithNewSessionId = useCallback(
+    (newSessionId: string) => {
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set("sessionId", newSessionId);
+      router.replace(currentUrl.toString());
+    },
+    [router]
+  );
+
+  const onClickResendOTP = async (data: EmailSchema) => {
+    console.log(data);
+    try {
+      const res = await resendOTPMutation.mutateAsync(data);
+      console.log(res.data.session_id);
+      updateURLWithNewSessionId(res.data.session_id);
+      toast.success("Please check your mail for a new OTP");
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
+  };
 
   const onSubmit = async (data: VerificationCodeSchema) => {
     console.log({ ...data, session_id });
@@ -64,8 +89,8 @@ export default function VerifyEmailForm() {
           Verify your email
         </h1>
         <p className="pb-4 text-base font-medium text-slate-grey">
-          Input the 6 digit verification code sent to your email
-          alvin2k99@gmail.com
+          Input the 6 digit verification code sent to your email{" "}
+          {decodeURIComponent(email!)}
         </p>
       </div>
       <form
@@ -106,11 +131,15 @@ export default function VerifyEmailForm() {
         </Button>
       </form>
 
-      <div className="mt-8">
-        <p className="text-slate-gray text-sm flex gap-x-2 justify-center">
+      <div className="mt-8 flex justify-center">
+        <Button
+          className="text-slate-gray text-sm flex gap-x-2 justify-center bg-transparent py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
+          onClick={() => onClickResendOTP({ email: email ?? "" })}
+          disabled={resendOTPMutation.isPending}
+        >
           Resend code in
           <span className="text-sm text-primary-shade">02:00</span>
-        </p>
+        </Button>
       </div>
     </section>
   );
