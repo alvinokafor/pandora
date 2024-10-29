@@ -2,6 +2,7 @@ import React from "react";
 import { ReuploadIcon } from "@/assets/icons";
 import { DocumentIcon } from "./icons";
 import { UserProfileTab } from "../user";
+import Image from "next/image";
 
 export default function FileDetails() {
   return (
@@ -15,7 +16,7 @@ export default function FileDetails() {
               <p className="font-medium text-base text-marian-blue">
                 Asaba Land Deed
               </p>
-              <img src="/beneficiaries-img.png" alt="" />
+              <Image src="/beneficiaries-img.png" alt="" />
             </div>
           </div>
 

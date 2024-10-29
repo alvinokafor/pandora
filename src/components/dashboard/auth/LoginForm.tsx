@@ -70,7 +70,7 @@ export default function LoginForm() {
           </Button>
           <Flex align={"center"} justify={"between"}>
             <Text align={"center"} as="p">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link className="underline text-slate-500" to={"/sign-up"}>
                 Sign Up
               </Link>

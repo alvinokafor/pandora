@@ -1,3 +1,3 @@
-// import { apiInstance } from "./api";
+import { apiInstance } from "./api";
 
-// export { router, apiInstance };
+export { apiInstance };
