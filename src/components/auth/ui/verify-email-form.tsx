@@ -16,6 +16,7 @@ import {
   VerificationCodeSchema,
   verificationCodeValidator,
 } from "@/lib/validations/authValidator";
+import { useSearchParams } from "next/navigation";
 
 type FormValues = {
   code: string;
@@ -32,12 +33,17 @@ export default function VerifyEmailForm() {
       code: "",
     },
   });
+  const searchParams = useSearchParams();
+  const session_id = searchParams.get("sessionId");
+  // console.log(session_id);
+
+  //84afc1ca-6f36-4ae1-af35-9f2a879b46a8
 
   const { mutateAsync, isPending } = useAuthMutation({
     mutationCallback: AuthAdapter.verifyUserEmail,
   });
 
-  const session_id: string = "abcdefghijklmnopqrstuvwxyz";
+  // const session_id: string = "abcdefghijklmnopqrstuvwxyz";
 
   const onSubmit = async (data: VerificationCodeSchema) => {
     console.log({ ...data, session_id });
@@ -45,8 +51,9 @@ export default function VerifyEmailForm() {
       const res = await mutateAsync({ ...data, session_id });
       console.log(res);
       toast.success("Email Verification Successful");
-    } catch (error) {
-      toast.error("Something went wrong. Please try again");
+    } catch (error: any) {
+      toast.error(error.response.data.message + ". Please resend otp");
+      // console.log(error);
     }
   };
 

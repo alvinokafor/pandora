@@ -9,11 +9,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Theme } from "@radix-ui/themes";
 import { Toaster } from "sonner";
 import { UserProvider } from "@/contexts/UserContext";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
+// import { Roboto } from ""
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 type Page<P = {}> = NextPage<P> & {
@@ -28,7 +32,8 @@ const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: Props) {
   return (
-    <main className={`font-sans`}>
+    <main className={`${inter.variable} font-sans`}>
+      {/* // <main className={inter.className}> */}
       <QueryClientProvider client={queryClient}>
         {/* <Theme accentColor="green"> */}
         <UserProvider>

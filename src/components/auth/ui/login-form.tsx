@@ -13,9 +13,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/router";
 
 export default function LoginForm() {
   const [InputType, Icon, setVisible] = useObfuscationToggle();
+
+  const router = useRouter();
 
   const {
     register,
@@ -42,6 +45,7 @@ export default function LoginForm() {
       const res = await mutateAsync(data);
       console.log(res);
       toast.success("Login Successful");
+      router.push("/");
     } catch (error) {
       toast.error("Invalid Credentials");
     }

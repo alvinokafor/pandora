@@ -7,9 +7,12 @@ import { toast } from "sonner";
 import { useObfuscationToggle } from "@/hooks";
 import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { signInValidator, SignInSchema } from "@/lib/validations/authValidator";
+import { useRouter } from "next/router";
 
 export default function CreateAccountForm() {
   const [InputType, Icon, setVisible] = useObfuscationToggle();
+
+  const router = useRouter();
 
   const {
     register,
@@ -29,6 +32,7 @@ export default function CreateAccountForm() {
       const res = await mutateAsync(data);
       console.log(res);
       toast.success("Sign Up Successful");
+      router.push(`/auth/verify-email?sessionId=${res.data.session_id}`);
     } catch (error) {
       toast.error("Something went wrong. Please try again");
     }

@@ -18,7 +18,7 @@ export type IMessageRes = {
 };
 
 export type IVerifyEmail = {
-  session_id: string;
+  session_id: string | null;
   code: string;
 };
 
