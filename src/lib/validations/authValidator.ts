@@ -8,6 +8,7 @@ export const loginValidator = z.object({
     .string()
     .min(6, { message: "Password must be at least 6 characters" })
     .max(32, { message: "Password must not be more than 32 characters" }),
+  remember_me: z.boolean().default(false),
 });
 
 export type LoginSchema = z.infer<typeof loginValidator>;

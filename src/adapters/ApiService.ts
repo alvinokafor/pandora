@@ -1,7 +1,15 @@
+import { AxiosResponse } from "axios";
 import { apiInstance } from "@/config";
 
 type Method = "POST" | "PUT" | "PATCH" | "DELETE";
 type ContentType = "JSON" | "FormData";
+
+type MutateArgs<R> = {
+  slug?: string;
+  payload: R;
+  type: ContentType;
+  method: Method;
+};
 
 class ApiService {
   public url: string;
@@ -10,41 +18,37 @@ class ApiService {
     this.url = url;
   }
 
-  //getter method to fetch the auth token dynamically
-  private get token(): string | null {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
-      return token;
-    }
-    return null;
+  //method to fetch the auth token dynamically
+  private async getToken() {
+    // const token = await getData("accessToken");
+    const token = "abcde";
+    return token;
   }
 
   //fetches all data
-  async getAll<T>(params: string): Promise<T> {
+  async fetch<TData>(params: string): Promise<TData> {
+    const token = await this.getToken();
     const res = await apiInstance.get(`${this.url}${params}`, {
-      headers: { Authorization: `Bearer ${this.token}` },
+      headers: { Authorization: token },
     });
-    return res.data as T;
-  }
-
-  //fetches a single data entry
-  async getByID<R>(id: string): Promise<R> {
-    const res = await apiInstance.get(this.url + "/" + id, {
-      headers: { Authorization: `Bearer ${this.token}` },
-    });
-
-    return res.data as R;
+    return res.data as TData;
   }
 
   // handles mutation requests => POST, PATCH, PUT, DELETE
   /* "slug" can be an id or an extra path to be added to the base url, 
   pass in an empty string if you have no need for a slug(POST methods only) */
-  async mutate<B>(slug: string, payload: B, type: ContentType, method: Method) {
+  async mutate<TPayload, TResponse>({
+    slug,
+    payload,
+    type,
+    method,
+  }: MutateArgs<TPayload>): Promise<AxiosResponse<TResponse>> {
+    const token = await this.getToken();
     const contentType =
       type === "FormData" ? "multipart/form-data" : "application/json";
     const url = `${this.url}${slug ? "/" + slug : ""}`;
     const headers = {
-      Authorization: this.token ? `Bearer ${this.token}` : "",
+      Authorization: token ? token : "",
       "Content-Type": contentType,
     };
 
@@ -55,7 +59,7 @@ class ApiService {
       headers,
     };
 
-    return await apiInstance(config);
+    return await apiInstance.request<TResponse>(config);
   }
 }
 
