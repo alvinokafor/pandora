@@ -12,9 +12,9 @@ export default function Security() {
       <path
         d="M9.99992 18.3337C9.99992 18.3337 16.6666 15.0003 16.6666 10.0003V4.16699L9.99992 1.66699L3.33325 4.16699V10.0003C3.33325 15.0003 9.99992 18.3337 9.99992 18.3337Z"
         stroke="#101828"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
