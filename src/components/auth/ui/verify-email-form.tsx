@@ -39,7 +39,7 @@ export default function VerifyEmailForm() {
   const router = useRouter();
   const session_id = searchParams.get("sessionId");
   const email = searchParams.get("email");
-  console.log(email);
+  // console.log(email);
 
   const { mutateAsync, isPending } = useAuthMutation({
     mutationCallback: AuthAdapter.verifyUserEmail,
@@ -59,10 +59,10 @@ export default function VerifyEmailForm() {
   );
 
   const onClickResendOTP = async (data: EmailSchema) => {
-    console.log(data);
+    // console.log(data);
     try {
       const res = await resendOTPMutation.mutateAsync(data);
-      console.log(res.data.session_id);
+      // console.log(res.data.session_id);
       updateURLWithNewSessionId(res.data.session_id);
       toast.success("Please check your mail for a new OTP");
     } catch (error: any) {
@@ -71,13 +71,14 @@ export default function VerifyEmailForm() {
   };
 
   const onSubmit = async (data: VerificationCodeSchema) => {
-    console.log({ ...data, session_id });
+    // console.log({ ...data, session_id });
     try {
       const res = await mutateAsync({ ...data, session_id });
-      console.log(res);
+      // console.log(res);
       toast.success("Email Verification Successful");
+      router.push("/");
     } catch (error: any) {
-      toast.error(error.response.data.message + ". Please resend otp");
+      toast.error(error.response.data.message);
       // console.log(error);
     }
   };
@@ -133,12 +134,13 @@ export default function VerifyEmailForm() {
 
       <div className="mt-8 flex justify-center">
         <Button
-          className="text-slate-gray text-sm flex gap-x-2 justify-center bg-transparent py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
+          className="text-slate-gray text-sm flex gap-x-2 justify-center bg-transparent py-2.5 rounded-lg transition-all duration-100 hover:shadow-md hover:underline hover:bg-transparent"
           onClick={() => onClickResendOTP({ email: email ?? "" })}
           disabled={resendOTPMutation.isPending}
         >
-          Resend code in
-          <span className="text-sm text-primary-shade">02:00</span>
+          {/* Resend code in
+          <span className="text-sm text-primary-shade">02:00</span> */}
+          Resend OTP code
         </Button>
       </div>
     </section>

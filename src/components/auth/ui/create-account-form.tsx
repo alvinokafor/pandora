@@ -30,10 +30,10 @@ export default function CreateAccountForm() {
   });
 
   const onSubmit = async (data: SignInSchema) => {
-    console.log(data);
+    // console.log(data);
     try {
       const res = await mutateAsync(data);
-      console.log(res);
+      // console.log(res);
       toast.success("Sign Up Successful");
       router.push(
         `/auth/verify-email?sessionId=${res.data.session_id}&email=${email}`

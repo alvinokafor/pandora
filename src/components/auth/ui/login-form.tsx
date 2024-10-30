@@ -40,10 +40,10 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data: LoginSchema) => {
-    console.log(data);
+    // console.log(data);
     try {
       const res = await mutateAsync(data);
-      console.log(res);
+      // console.log(res);
       toast.success("Login Successful");
       router.push("/");
     } catch (error) {
