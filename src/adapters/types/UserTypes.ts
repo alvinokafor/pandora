@@ -42,6 +42,6 @@ export type ISessionIdData = {
 };
 
 export type IResetPassword = {
-  session_id: string;
+  session_id: string | null;
   password: string;
 };

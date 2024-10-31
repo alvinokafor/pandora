@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { emailValidator, EmailSchema } from "@/lib/validations/authValidator";
+import { useRouter } from "next/navigation";
 
 export default function ForgotPasswordForm() {
   const {
@@ -14,6 +15,8 @@ export default function ForgotPasswordForm() {
     resolver: zodResolver(emailValidator),
   });
 
+  const router = useRouter();
+
   const { mutateAsync, isPending } = useAuthMutation({
     mutationCallback: AuthAdapter.forgotPassword,
   });
@@ -23,7 +26,8 @@ export default function ForgotPasswordForm() {
     try {
       const res = await mutateAsync(data);
       console.log(res);
-      toast.success("Sign Up Successful");
+      toast.success("Reset password email sent");
+      router.push(`/auth/reset-password?sessionId=${res.data.session_id}`);
     } catch (error) {
       toast.error("Something went wrong. Please try again");
     }
@@ -33,10 +37,10 @@ export default function ForgotPasswordForm() {
     <section className="text-center md:w-[360px]">
       <div>
         <h1 className="pb-2 text-2xl font-bold leading-10 text-heading-black">
-          Forgot Password{" "}
+          Forgot Password
         </h1>
         <p className="pb-4 text-base font-medium text-slate-grey">
-          Enter your email to receive on how to reset your password{" "}
+          Enter your email to receive on how to reset your password
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -56,6 +60,11 @@ export default function ForgotPasswordForm() {
               className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
               {...register("email")}
             />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">
+                {errors.email.message}
+              </p>
+            )}
           </div>
         </div>
 

@@ -20,10 +20,6 @@ import {
 } from "@/lib/validations/authValidator";
 import { useSearchParams, useRouter } from "next/navigation";
 
-type FormValues = {
-  code: string;
-};
-
 export default function VerifyEmailForm() {
   const {
     control,
@@ -122,6 +118,9 @@ export default function VerifyEmailForm() {
             </InputOTP>
           )}
         />
+        {errors.code && (
+          <p className="mt-1 text-sm text-red-600">{errors.code.message}</p>
+        )}
 
         <Button
           type="submit"
