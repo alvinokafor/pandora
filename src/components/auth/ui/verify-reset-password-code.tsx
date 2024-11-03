@@ -21,7 +21,7 @@ import {
 import { useSearchParams, useRouter } from "next/navigation";
 import { LoadingIcon } from "@/assets/icons";
 
-export default function VerifyEmailForm() {
+export default function VerifyResetPasswordCode() {
   const {
     control,
     handleSubmit,

@@ -11,6 +11,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useObfuscationToggle } from "@/hooks";
 import { Input } from "@/components/ui/input";
 import { LoadingIcon } from "@/assets/icons";
+import { Button } from "@/components/ui/button";
 
 export default function ResetPasswordForm() {
   const {
@@ -109,13 +110,13 @@ export default function ResetPasswordForm() {
         </div>
 
         <div className="mt-6 space-y-3">
-          <button
+          <Button
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
             type="submit"
             disabled={isPending}
           >
             {isPending ? <LoadingIcon /> : "Continue"}
-          </button>
+          </Button>
         </div>
       </form>
     </section>

@@ -6,6 +6,7 @@ import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { emailValidator, EmailSchema } from "@/lib/validations/authValidator";
 import { useRouter } from "next/navigation";
 import { LoadingIcon } from "@/assets/icons";
+import { Button } from "@/components/ui/button";
 
 export default function ForgotPasswordForm() {
   const {
@@ -70,13 +71,13 @@ export default function ForgotPasswordForm() {
         </div>
 
         <div className="mt-6 space-y-3">
-          <button
+          <Button
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
             type="submit"
             disabled={isPending}
           >
             {isPending ? <LoadingIcon /> : "Continue"}
-          </button>
+          </Button>
         </div>
       </form>
     </section>

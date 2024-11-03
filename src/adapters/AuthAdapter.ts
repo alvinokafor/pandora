@@ -113,6 +113,18 @@ const AuthAdapter = {
     });
     return res.data;
   },
+
+  verifyResetPasswordSession: async ({
+    params,
+  }: {
+    params: string;
+  }): Promise<IMessageRes> => {
+    const res = await authService.fetch<IMessageRes>(
+      `/reset-password/verify/?session_id=${params}`
+    );
+
+    return res;
+  },
 };
 
 export { AuthAdapter, useAuthMutation, useAuthQuery };

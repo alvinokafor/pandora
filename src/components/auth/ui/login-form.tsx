@@ -139,7 +139,6 @@ export default function LoginForm() {
           <Button
             type="submit"
             disabled={isPending}
-            onClick={() => console.log("Submit Button Clicked")}
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
           >
             {isPending ? <LoadingIcon /> : "Sign In"}

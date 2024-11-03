@@ -8,6 +8,7 @@ import { useObfuscationToggle } from "@/hooks";
 import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { signInValidator, SignInSchema } from "@/lib/validations/authValidator";
 import { useRouter } from "next/router";
+import { Button } from "@/components/ui/button";
 
 export default function CreateAccountForm() {
   const [InputType, Icon, setVisible] = useObfuscationToggle();
@@ -107,22 +108,22 @@ export default function CreateAccountForm() {
         </div>
 
         <div className="mt-5 space-y-2">
-          <button
+          <Button
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg  transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
             type="submit"
             disabled={isPending}
           >
             {isPending ? <LoadingIcon /> : "Get Started"}
-          </button>
+          </Button>
           <p>OR</p>
-          <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
+          <Button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
             <GoogleColorIcon />
             Sign up with Google
-          </button>
-          <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
+          </Button>
+          <Button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">
             <FacebookLogo />
             Sign up with Facebook
-          </button>
+          </Button>
         </div>
       </form>
 
