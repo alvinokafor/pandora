@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { GoogleColorIcon } from "@/assets/icons";
+import { GoogleColorIcon, LoadingIcon } from "@/assets/icons";
 import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { loginValidator, LoginSchema } from "@/lib/validations/authValidator";
 import { useObfuscationToggle } from "@/hooks";
@@ -142,7 +142,7 @@ export default function LoginForm() {
             onClick={() => console.log("Submit Button Clicked")}
             className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
           >
-            {isPending ? "Signing In..." : "Sign In"}
+            {isPending ? <LoadingIcon /> : "Sign In"}
           </Button>
           <Button
             type="button"

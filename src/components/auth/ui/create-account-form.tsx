@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleColorIcon, FacebookLogo } from "@/assets/icons";
+import { GoogleColorIcon, FacebookLogo, LoadingIcon } from "@/assets/icons";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -112,7 +112,7 @@ export default function CreateAccountForm() {
             type="submit"
             disabled={isPending}
           >
-            {isPending ? "Setting up your account" : "Get Started"}
+            {isPending ? <LoadingIcon /> : "Get Started"}
           </button>
           <p>OR</p>
           <button className="flex gap-x-2 text-charcoal items-center justify-center text-sm border rounded-lg border-french-gray py-2.5 text-center w-full">

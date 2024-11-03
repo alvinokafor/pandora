@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { emailValidator, EmailSchema } from "@/lib/validations/authValidator";
 import { useRouter } from "next/navigation";
+import { LoadingIcon } from "@/assets/icons";
 
 export default function ForgotPasswordForm() {
   const {
@@ -74,7 +75,7 @@ export default function ForgotPasswordForm() {
             type="submit"
             disabled={isPending}
           >
-            {isPending ? "Please wait..." : "Continue"}
+            {isPending ? <LoadingIcon /> : "Continue"}
           </button>
         </div>
       </form>

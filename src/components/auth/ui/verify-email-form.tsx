@@ -19,6 +19,7 @@ import {
   EmailSchema,
 } from "@/lib/validations/authValidator";
 import { useSearchParams, useRouter } from "next/navigation";
+import { LoadingIcon } from "@/assets/icons";
 
 export default function VerifyEmailForm() {
   const {
@@ -127,7 +128,7 @@ export default function VerifyEmailForm() {
           className="w-full text-center text-base bg-base-purple text-white py-2.5 rounded-lg transition-all duration-100 hover:text-neutral-50 hover:shadow-md hover:bg-[#714ec5e8]"
           disabled={isPending}
         >
-          {isPending ? "Please wait..." : "Continue"}
+          {isPending ? <LoadingIcon /> : "Continue"}
         </Button>
       </form>
 
