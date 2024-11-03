@@ -13,11 +13,13 @@ export default function ForgotPasswordForm() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<EmailSchema>({
     resolver: zodResolver(emailValidator),
   });
 
   const router = useRouter();
+  const email = watch("email");
 
   const { mutateAsync, isPending } = useAuthMutation({
     mutationCallback: AuthAdapter.forgotPassword,
@@ -29,7 +31,9 @@ export default function ForgotPasswordForm() {
       const res = await mutateAsync(data);
       console.log(res);
       toast.success("Reset password email sent");
-      router.push(`/auth/reset-password?sessionId=${res.data.session_id}`);
+      router.push(
+        `/auth/verify-reset-password?sessionId=${res.data.session_id}&email=${email}`
+      );
     } catch (error) {
       toast.error("Something went wrong. Please try again");
     }

@@ -11,7 +11,11 @@ import {
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
+import {
+  AuthAdapter,
+  useAuthMutation,
+  useAuthQuery,
+} from "@/adapters/AuthAdapter";
 import {
   VerificationCodeSchema,
   verificationCodeValidator,
@@ -39,12 +43,16 @@ export default function VerifyResetPasswordCode() {
   // console.log(email);
 
   const { mutateAsync, isPending } = useAuthMutation({
-    mutationCallback: AuthAdapter.verifyUserEmail,
+    mutationCallback: AuthAdapter.confirmResetPasswordSession,
   });
 
-  const resendOTPMutation = useAuthMutation({
-    mutationCallback: AuthAdapter.resendVerificationOTP,
+  const { data } = useAuthQuery({
+    queryKey: ["session_id"],
+    queryCallback: AuthAdapter.verifyResetPasswordSession,
+    slug: session_id!,
   });
+
+  console.log(data);
 
   const updateURLWithNewSessionId = useCallback(
     (newSessionId: string) => {
@@ -55,25 +63,13 @@ export default function VerifyResetPasswordCode() {
     [router]
   );
 
-  const onClickResendOTP = async (data: EmailSchema) => {
-    // console.log(data);
-    try {
-      const res = await resendOTPMutation.mutateAsync(data);
-      // console.log(res.data.session_id);
-      updateURLWithNewSessionId(res.data.session_id);
-      toast.success("Please check your mail for a new OTP");
-    } catch (error: any) {
-      toast.error(error.response.data.message);
-    }
-  };
-
   const onSubmit = async (data: VerificationCodeSchema) => {
     // console.log({ ...data, session_id });
     try {
       const res = await mutateAsync({ ...data, session_id });
-      // console.log(res);
-      toast.success("Email Verification Successful");
-      router.push("/");
+      console.log(res);
+      toast.success("session is confirmed");
+      router.push(`/auth/reset-password?sessionId=${session_id}`);
     } catch (error: any) {
       toast.error(error.response.data.message);
       // console.log(error);
@@ -131,18 +127,6 @@ export default function VerifyResetPasswordCode() {
           {isPending ? <LoadingIcon /> : "Continue"}
         </Button>
       </form>
-
-      <div className="mt-8 flex justify-center">
-        <Button
-          className="text-slate-gray text-sm flex gap-x-2 justify-center bg-transparent py-2.5 rounded-lg transition-all duration-100 hover:shadow-md hover:underline hover:bg-transparent"
-          onClick={() => onClickResendOTP({ email: email ?? "" })}
-          disabled={resendOTPMutation.isPending}
-        >
-          {/* Resend code in
-          <span className="text-sm text-primary-shade">02:00</span> */}
-          {resendOTPMutation.isPending ? "Please Wait..." : "Resend OTP code"}
-        </Button>
-      </div>
     </section>
   );
 }

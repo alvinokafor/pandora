@@ -114,11 +114,9 @@ const AuthAdapter = {
     return res.data;
   },
 
-  verifyResetPasswordSession: async ({
-    params,
-  }: {
-    params: string;
-  }): Promise<IMessageRes> => {
+  verifyResetPasswordSession: async (
+    params: string | undefined
+  ): Promise<IMessageRes> => {
     const res = await authService.fetch<IMessageRes>(
       `/reset-password/verify/?session_id=${params}`
     );
