@@ -12,9 +12,9 @@ export default function CategoryIcon() {
       <path
         d="M17.4999 5.66667V16.5H2.49992V5.66667M8.33325 9H11.6666M0.833252 1.5H19.1666V5.66667H0.833252V1.5Z"
         stroke="#101828"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

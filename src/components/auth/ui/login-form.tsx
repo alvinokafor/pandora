@@ -8,12 +8,18 @@ import { toast } from "sonner";
 import { GoogleColorIcon } from "@/assets/icons";
 import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { loginValidator, LoginSchema } from "@/lib/validations/authValidator";
+import { useObfuscationToggle } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/router";
 
 export default function LoginForm() {
+  const [InputType, Icon, setVisible] = useObfuscationToggle();
+
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -34,10 +40,12 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data: LoginSchema) => {
-    console.log(data);
+    // console.log(data);
     try {
-      await mutateAsync(data);
+      const res = await mutateAsync(data);
+      // console.log(res);
       toast.success("Login Successful");
+      router.push("/");
     } catch (error) {
       toast.error("Invalid Credentials");
     }
@@ -85,13 +93,21 @@ export default function LoginForm() {
           >
             Password
           </Label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Enter Your Password..."
-            className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
-            {...register("password")}
-          />
+          <div className="relative">
+            <Input
+              id="password"
+              type={InputType}
+              placeholder="Enter Your Password..."
+              className="block w-full rounded-md border-0 py-1.5 text-charcoal placeholder:text-sm placeholder:text-slate-grey focus:outline-none shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-slate-300 sm:text-sm sm:leading-6 pl-4"
+              {...register("password")}
+            />
+            <div
+              className="absolute top-[20%] right-4 pt-1"
+              onClick={() => setVisible((visible) => !visible)}
+            >
+              {Icon}
+            </div>
+          </div>
           {errors.password && (
             <p className="mt-1 text-sm text-red-600">
               {errors.password.message}

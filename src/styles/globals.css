@@ -1,12 +1,4 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-@import "tailwindcss/base";
-@import "@radix-ui/themes/styles.css";
-@import "./theme-config.css";
-
-/* @tailwind base; */
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -81,4 +73,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.inter {
+  font-family: var(--font-inter);
 }
