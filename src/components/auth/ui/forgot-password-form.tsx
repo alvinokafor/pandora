@@ -7,6 +7,7 @@ import { emailValidator, EmailSchema } from "@/lib/validations/authValidator";
 import { useRouter } from "next/navigation";
 import { LoadingIcon } from "@/assets/icons";
 import { Button } from "@/components/ui/button";
+import { getErrorMessage } from "@/utils";
 
 export default function ForgotPasswordForm() {
   const {
@@ -35,7 +36,8 @@ export default function ForgotPasswordForm() {
         `/auth/verify-reset-password?sessionId=${res.data.session_id}&email=${email}`
       );
     } catch (error) {
-      toast.error("Something went wrong. Please try again");
+      // toast.error("Something went wrong. Please try again");
+      toast.error(getErrorMessage(error));
     }
   };
 

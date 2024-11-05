@@ -9,6 +9,7 @@ import { AuthAdapter, useAuthMutation } from "@/adapters/AuthAdapter";
 import { signInValidator, SignInSchema } from "@/lib/validations/authValidator";
 import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
+import { getErrorMessage } from "@/utils";
 
 export default function CreateAccountForm() {
   const [InputType, Icon, setVisible] = useObfuscationToggle();
@@ -40,7 +41,8 @@ export default function CreateAccountForm() {
         `/auth/verify-email?sessionId=${res.data.session_id}&email=${email}`
       );
     } catch (error) {
-      toast.error("Something went wrong. Please try again");
+      // toast.error("Something went wrong. Please try again");
+      toast.error(getErrorMessage(error));
     }
   };
 

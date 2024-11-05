@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useRouter } from "next/router";
+import { getErrorMessage } from "@/utils";
 
 export default function LoginForm() {
   const [InputType, Icon, setVisible] = useObfuscationToggle();
@@ -47,7 +48,8 @@ export default function LoginForm() {
       toast.success("Login Successful");
       router.push("/");
     } catch (error) {
-      toast.error("Invalid Credentials");
+      // toast.error("Invalid Credentials");
+      toast.error(getErrorMessage(error));
     }
   };
 

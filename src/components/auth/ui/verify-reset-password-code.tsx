@@ -24,6 +24,7 @@ import {
 } from "@/lib/validations/authValidator";
 import { useSearchParams, useRouter } from "next/navigation";
 import { LoadingIcon } from "@/assets/icons";
+import { getErrorMessage } from "@/utils";
 
 export default function VerifyResetPasswordCode() {
   const {
@@ -71,8 +72,8 @@ export default function VerifyResetPasswordCode() {
       toast.success("session is confirmed");
       router.push(`/auth/reset-password?sessionId=${session_id}`);
     } catch (error: any) {
-      toast.error(error.response.data.message);
-      // console.log(error);
+      // toast.error(error.response.data.message);
+      toast.error(getErrorMessage(error));
     }
   };
 

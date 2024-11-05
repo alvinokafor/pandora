@@ -12,6 +12,7 @@ import { useObfuscationToggle } from "@/hooks";
 import { Input } from "@/components/ui/input";
 import { LoadingIcon } from "@/assets/icons";
 import { Button } from "@/components/ui/button";
+import { getErrorMessage } from "@/utils";
 
 export default function ResetPasswordForm() {
   const {
@@ -34,7 +35,6 @@ export default function ResetPasswordForm() {
   const onSubmit = async (data: ResetPasswordSchema) => {
     console.log(data);
     try {
-      // Only send the password and session_id to the backend
       const res = await mutateAsync({
         password: data.password,
         session_id,
@@ -43,7 +43,8 @@ export default function ResetPasswordForm() {
       toast.success("Password reset Successful");
       router.push("/auth/login");
     } catch (error) {
-      toast.error("Something went wrong. Please try again");
+      // toast.error("Something went wrong. Please try again");
+      toast.error(getErrorMessage(error));
     }
   };
 

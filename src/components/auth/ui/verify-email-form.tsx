@@ -20,6 +20,7 @@ import {
 } from "@/lib/validations/authValidator";
 import { useSearchParams, useRouter } from "next/navigation";
 import { LoadingIcon } from "@/assets/icons";
+import { getErrorMessage } from "@/utils";
 
 export default function VerifyEmailForm() {
   const {
@@ -63,7 +64,8 @@ export default function VerifyEmailForm() {
       updateURLWithNewSessionId(res.data.session_id);
       toast.success("Please check your mail for a new OTP");
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
+      toast.error(getErrorMessage(error));
     }
   };
 
